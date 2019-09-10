@@ -44,13 +44,13 @@ http://gateway.marvel.com/v1/public/comics?ts=1&apikey=[your_public_key_here]&ha
 
 But I did not succeed with that query because the list only reaches 100 and when you search for the word "Cable" there is no match. This situation can be seen in the following image.
 
-![List of comics query](img/img-2.jpg)
+![List of comics query](img/img-2.png)
 
 It can be seen in the previous image that the total list of comics is 45172 and the total amount of the query is 20 comics ("count" field).
 
 I tried adding a limit = 45172 parameter to the query but it threw error code 409: "You may not request more than 100 items". This error message can be seen in the following image:
 
-![Error code 409](img/img-3.jpg)
+![Error code 409](img/img-3.png)
 
 Cause of that I made a different query, this time the query had the following form: 
 
@@ -60,7 +60,7 @@ http://gateway.marvel.com/v1/public/characters?ts=1&apikey=[your_public_key_here
 
 Through this second query I could find the comic **"Cable & Deadpool (2004) # 46 (Zombie Variant)"** with its corresponding id, as seen in the following image:
 
-![Cable & Deadpool (2004) # 46 (Zombie Variant) ID](img/img-4.jpg)
+![Cable & Deadpool (2004) # 46 (Zombie Variant) ID](img/img-4.png)
 
 With the ID 21845 I got information related to the list of characters of Cable & Deadpool (2004) #46 (Zombie Variant). The query was the following:
 
@@ -69,7 +69,7 @@ http://gateway.marvel.com/v1/public/comics/21845?ts=1&apikey=[your_public_key_he
 ```
 The results are shown in the image below:
 
-![list of characters of Cable & Deadpool (2004) # 46(Zombie Variant)](img/img-5.jpg)
+![list of characters of Cable & Deadpool (2004) # 46(Zombie Variant)](img/img-5.png)
 
 Finally, with the information contained in the "data" field I generated a **JSON document** named **“cableAndDeadpoolCharacters.json”**. This document is in the same folder (Challenge-C02)  of this README file.
 
@@ -77,7 +77,7 @@ Finally, with the information contained in the "data" field I generated a **JSON
 
 In the same previous query you can find the ID of the character Agent X (Nijo), which is 1011031. As can be seen in the following image:
 
-![Agent X (Nijo)'s ID](img/img-6.jpg)
+![Agent X (Nijo)'s ID](img/img-6.png)
 
 With the ID it is already possible to obtain the stories where Agent X (Nijo) appears, the query used is:
 
@@ -87,7 +87,7 @@ http://gateway.marvel.com/v1/public/characters/1011031/stories?ts=1&apikey=[your
 
 The results of the previous query are shown in the following image: 
 
-![Agent X (Nijo)'s stories](img/img-7.jpg)
+![Agent X (Nijo)'s stories](img/img-7.png)
 
 As you can see in the previous image, the total results are 23 characters but only 20 are displayed. For this reason it is necessary to add the limit = 23 parameter and make the query again. The complete query is as follows:
 
@@ -97,6 +97,6 @@ http://gateway.marvel.com/v1/public/characters/1011031/stories?ts=1&apikey=[your
 
 The results now show the complete list of characters, as seen in the following image:
 
-![complete list of Agent X (Nijo) stories](img/img-8.jpg)
+![complete list of Agent X (Nijo) stories](img/img-8.png)
 
 Finally, with the information contained in the “data” field, i generated a JSON document named **agentX(Nijo)Stories.json**. This This document is in the same folder (Challenge-C02)  of this Readme file.  
