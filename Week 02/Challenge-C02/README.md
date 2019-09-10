@@ -1,11 +1,11 @@
 # Challenge C02
 RESTful APIs and HTTP requests
 
--Download postman and get information for a superhero from Marvel API
--Access to https://developer.marvel.com/docs and do all steps to get an API key to get access
--Get information related to the list of characters of Cable & Deadpool (2004) #46 (Zombie Variant)
--Get a list of all stories when Agent X (Nijo) appears
--Generate JSON document with this information and push to GitHub repo
+- Download postman and get information for a superhero from Marvel API
+- Access to https://developer.marvel.com/docs and do all steps to get an API key to get access
+- Get information related to the list of characters of Cable & Deadpool (2004) #46 (Zombie Variant)
+- Get a list of all stories when Agent X (Nijo) appears
+- Generate JSON document with this information and push to GitHub repo
 
 Listed below are the steps taken to retrieve superhero information with the Marvel API.
 
@@ -71,7 +71,7 @@ The results are shown in the image below:
 
 ![list of characters of Cable & Deadpool (2004) # 46(Zombie Variant)](img/img-5.png)
 
-Finally, with the information contained in the "data" field I generated a **JSON document** named **“cableAndDeadpoolCharacters.json”**. This document is in the same folder (Challenge-C02)  of this README file.
+Finally, with the information contained in the "data" field I generated a **JSON document** named **[cableAndDeadpoolCharacters.json](cableAndDeadpoolCharacters.json)**. This document is in the same folder (Challenge-C02)  of this README file.
 
 **Step 4. Get a list of all stories when Agent X (Nijo) appears**
 
@@ -99,4 +99,4 @@ The results now show the complete list of characters, as seen in the following i
 
 ![complete list of Agent X (Nijo) stories](img/img-8.png)
 
-Finally, with the information contained in the “data” field, i generated a JSON document named **agentX(Nijo)Stories.json**. This This document is in the same folder (Challenge-C02)  of this Readme file.  
+Finally, with the information contained in the “data” field, i generated a JSON document named **[agentX(Nijo)Stories.json](agentX(Nijo)Stories.json)**. This This document is in the same folder (Challenge-C02)  of this Readme file.  
