@@ -13,7 +13,7 @@ Listed below are the steps taken to retrieve superhero information with the Marv
 
 After downloading Postman, I signed up in the Marvel developer portal https://developer.marvel.com/docs and did all steps to get an API key to get Access. You need to register and then click on “Get a Key” (as shown in the image below). After that you must follow the indicated steps.
 
-![Marvel Developer Portal](img/img-1.jpg)
+![Marvel Developer Portal](img/img-1.png)
 
 The portal threw me a private key and a public key. 
 
