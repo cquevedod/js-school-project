@@ -4,27 +4,34 @@
     .navbar-header #jobsity-text { display: inline;}
   }
 
-  @media screen and (min-width: 768px){
+    @media screen and (max-width: 1280px){
     .sidebar {
        width: 15%; 
     }
-    .right-content { float: right;}
-  } 
-
-  @media screen and (min-width: 768px) {
+     .right-sidebar { float: right;} 
     .center-content {
       width: 70%;
     }
-  }
+  }  
+  
+  @media screen and (min-width: 1280px){
+    .sidebar {
+       width: 15%; 
+    }
+     .right-sidebar { float: right;} 
+    .center-content {
+      width: 70%;
+    }
+  }  
 
   @media only screen and (max-width: 768px) {
-    section.right-content {
+    section.right-sidebar {
       display: none;
     }
-
+ 
     section.center-content {
-      width: 85%;
-    }
+      width: 100%;
+    } 
   }
 
   
@@ -35,7 +42,7 @@
       position: relative;
     }
     /* .left-sidebar {float: left;} */
-    section.center-content {margin-left: 0;}
+    section.center-content {margin-left: 0; margin-right: 0;}
     .left-sidebar .left-items {text-align: center;}
   }
   
@@ -58,6 +65,13 @@
     .navbar-header .login a {display: none;}
    
   }
+
+  @media only screen and (max-width: 1024px) {
+    .navbar-header .search-container {
+      width: auto;
+    }
+  }
+
 
 /* ===========================
    ====== Media Queries for Books ======

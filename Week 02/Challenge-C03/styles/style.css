@@ -6,6 +6,7 @@
 :root {
   --cover-width: 88%;
   --cover-height: 13.6em;
+  --author-padding: 2em;
 }
 
 * {
@@ -23,6 +24,8 @@ body {
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
   }
+
+   
 
 .navbar-header {
     overflow: hidden;
@@ -267,7 +270,7 @@ body {
   }
 
   .top-container .top-text {
-    padding: 1.2% 5.5%;
+    padding: 1.2% 6.5% 1.2% 7.9%; 
   }
 
   .top-container .top-text p {
@@ -277,7 +280,9 @@ body {
   .top-container .top-text #title-left {
     color: #231F20;
     font-family: PlutoSansCondLight;
+    margin-right: -1em;
   }
+
 
   .top-container .top-text #title-center {
     color: #979797;
@@ -301,7 +306,6 @@ body {
 
   .top-container .top-text #title-right {
     color: #6EC1E4;
-    
   }
 
  /* ===========================
@@ -314,36 +318,124 @@ body {
 
 .row {
   width: 86.4%;
-  margin: 0 7.5%;
+  margin: 0 6% 0 7.6%;
   margin-bottom: 1.5%;
+  /* display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px; */
 }
 
 .column {
   float: left;
   width: 20%;
   margin-bottom: 2%;
-  margin-right: 0;
+  margin-right: 0; 
+  /* max-width: 17.28%;
+  padding: 0 3px; */
+
 }
 
+ /* ===========================
+     ====== Cover Info ======
+     =========================== */
+
+     .cover-info {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      text-align: center;
+      margin-left: 0.5em;
+      margin-top: 0.3em;
+      margin-bottom: 0.9em;
+    }
+  
+    .cover-info::after, .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    
+    .cover .cover-info p {
+      text-transform: capitalize;
+      margin: 0;
+      padding: 0;
+    }
+    
+  /* ===========================
+       ====== Book title ======
+       =========================== */
+    
+  .cover .cover-info .book-title {
+    font-family: PlutoSansCondMedium;
+    font-size: 0.9375em;
+    color: #383838;
+    margin-top: 0.5em;
+    width: 90%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+  
+  }
+  
+  .cover-info .book-author {
+      padding-right: var(--author-padding);
+      font-family: PlutoSansCondLight;
+      color: #9E9E9E;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+  
+  
+  /* ===========================
+  ====== Stars ======
+  =========================== */
+  
+  .star-rating {
+    color: #6EC1E4;
+    font-family: Free-Regular-400;
+    font-size: 0.8em;
+  }
+  
+  .star-rating{
+    cursor:pointer;
+  }
+  
+  .checked {
+    color: #6EC1E4;
+  }
+  
+  
+/* ===========================
+====== Hover book ======
+=========================== */
 
 
-/* .card {
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+
+/* .cover {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
 } */
 
-.card p {
+.cover p {
   overflow: hidden;
   text-overflow: ellipsis;
+  /* text-align: left; */
 }
 
-.card img {
+.cover img {
   width: var(--cover-width);
   height: var(--cover-height);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
 
+/* 
 .container {
   padding: 0 16px;
-}
+} */
 
 .container::after, .row::after {
   content: "";
@@ -373,6 +465,7 @@ body {
 
 
 
+
   /* ===========================
    ====== Right sidebar ======
    =========================== */
@@ -384,6 +477,8 @@ body {
   .right-content p {
     padding: 0 12.5%;
     margin-top: 2em;
+    margin-left: 12.5%;
+
   }
 
   .content-list .title-list {
@@ -401,7 +496,7 @@ body {
     font-family: PlutoSansCondLight;
     font-size: 10px;
     margin-top: 2em;
-    opacity: 0.7;
+    opacity: 0.7;    
     
   }
 
