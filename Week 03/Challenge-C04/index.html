@@ -8,29 +8,77 @@
     <title>Piano</title>
 </head>
 <body>
-    <ul class="piano-container">
-        <li data-key="65" class="white e"><span class="note">C</span></li>
-        <li class="black ds"><span class="note">C# Db</span></li>
-        <li class="white d"><span class="note">D</span></li>
-        <li class="black cs"><span class="note">D# Eb</span></li>
-        <li class="white c"><span class="note">E</span></li>
-        <li class="white b"><span class="note">F</span></li>
-        <li class="black as"><span class="note">F# Gb</span></li>
-        <li class="white a"><span class="note">G</span></li>
-        <li class="black gs"><span class="note">G# Ab</span></li>
-        <li class="white g"><span class="note">A</span></li>
-        <li class="black fs"><span class="note">A# Bb</span></li>
-        <li class="white f"><span class="note">B</span></li>
+           <!-- Audios of the piano below-->
+ <!-- Octave C3-->
+<audio data-key="81" src="sounds/261-C2.mp3" preload="auto"></audio>
+<audio data-key="50" src="sounds/277-C2s.mp3" preload="auto"></audio>
+<audio data-key="87" src="sounds/293-D2.mp3" preload="auto"></audio>
+<audio data-key="51" src="sounds/311-D2s.mp3" preload="auto"></audio>
+<audio data-key="69" src="sounds/329-E2.mp3" preload="auto"></audio>
+<audio data-key="82" src="sounds/349-F2.mp3" preload="auto"></audio>
+<audio data-key="53" src="sounds/369-F2s.mp3" preload="auto"></audio>
+<audio data-key="84" src="sounds/391-G2.mp3" preload="auto"></audio>
+<audio data-key="54" src="sounds/415-G2s.mp3" preload="auto"></audio>
+<audio data-key="89" src="sounds/440-A2.mp3" preload="auto"></audio>
+<audio data-key="55" src="sounds/466-A2s.mp3" preload="auto"></audio>
+<audio data-key="85" src="sounds/495-B2.mp3" preload="auto"></audio>
+
+<!-- Octave C4-->
+<audio data-key="90" src="sounds/523-C3.mp3" preload="auto"></audio>
+<audio data-key="83" src="sounds/545-C3s.mp3" preload="auto"></audio>
+<audio data-key="88" src="sounds/587-D3.mp3" preload="auto"></audio>
+<audio data-key="68" src="sounds/622-D3s.mp3" preload="auto"></audio>
+<audio data-key="67" src="sounds/659-E3.mp3" preload="auto"></audio>
+<audio data-key="86" src="sounds/698-F2s.mp3" preload="auto"></audio>
+<audio data-key="71" src="sounds/698-F3.mp3" preload="auto"></audio>
+<audio data-key="66" src="sounds/783-G3.mp3" preload="auto"></audio>
+<audio data-key="72" src="sounds/830-G3s.mp3" preload="auto"></audio>
+<audio data-key="78" src="sounds/880-A3.mp3" preload="auto"></audio>
+<audio data-key="74" src="sounds/932-A3s.mp3" preload="auto"></audio>
+<audio data-key="77" src="sounds/987-B3.mp3" preload="auto"></audio>
+
+
+   <div class="piano-container">
+    <ul class="keys">
+       <!-- Octave C3-->
+        <li data-key="81" class="key white c"><span>q</span></li>
+        <li data-key="50" class="key black cs"><span>2</span></li>
+        <li data-key="87" class="key white d"><span>w</span></li>
+        <li data-key="51" class="key black ds"><span>3</span></li>
+        <li data-key="69" class="key white e"><span>e</span></li>
+        <li data-key="82" class="key white f"><span>r</span></li>
+        <li data-key="53" class="key black fs"><span>5</span></li>
+        <li data-key="84" class="key white g"><span>t</span></li>
+        <li data-key="54" class="key black gs"><span>6</span></li>
+        <li data-key="89" class="key white a"><span>y</span></li>
+        <li data-key="55" class="key black as"><span>7</span></li>
+        <li data-key="85" class="key white b"><span>u</span></li>
           
-    
-        <li class="white e"><span class="note">C</span></li>
-        <li class="black ds"><span class="note">C# Db</span></li>
-        <li class="white d"><span class="note">D</span></li>
-        <li class="black cs"><span class="note">D# Eb</span></li>
-        <li class="white c"><span class="note">E</span></li>
-      
-    
-    
+         <!-- Octave C4-->
+        <li data-key="90" class="key white c"><span>z</span></li>
+        <li data-key="83" class="key black cs"><span>s</span></li>
+        <li data-key="88" class="key white d"><span>x</span></li>
+        <li data-key="68" class="key black ds"><span>d</span></li>
+        <li data-key="67" class="key white e"><span>c</span></li>
+        <li data-key="86" class="key white f"><span>v</span></li>
+        <li data-key="71" class="key black fs"><span>g</span></li>
+        <li data-key="66" class="key white g"><span>b</span></li>
+        <li data-key="72" class="key black gs"><span>h</span></li>
+        <li data-key="78" class="key white a"><span>n</span></li>
+        <li data-key="74" class="key black as"><span>j</span></li>
+        <li data-key="77" class="key white b"><span>m</span></li>
    </ul>
+</div>
+
+   <script src="script.js"></script>
+   <!--The following snippet is used for avoid play
+    sounds of keys unavailables when Piano is opened in mobile devices-->
+   <script>
+      if(window.screen.width < 768 ){
+       for (let i=12; i<17; i++){
+         document.getElementsByTagName("li")[i].removeAttribute("data-key");
+       }
+      } 
+   </script>
 </body>
 </html>
