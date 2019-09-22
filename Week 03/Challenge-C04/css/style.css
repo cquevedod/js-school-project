@@ -16,9 +16,37 @@ body {
 .header {
   color: #eee;
   position: relative;
-  margin-bottom: -10.5%;
+  margin-bottom: -6.5%;
   font-family: PlutoSansCondBlack;
   text-align: center;
+}
+
+.piano-container {
+  margin-top: -6.5%;
+}
+
+.header #mobile-instruction {
+  color: rgb(230, 73, 16);
+  display: none;
+}
+
+.header #message {
+  color: rgb(85, 160, 11);
+  display: none;
+}
+
+.header #musicalnote {
+  font-size: 1.5em;
+  margin-bottom: -3%;
+}
+
+.sustain-check{
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  margin: 5% 0 -3% 3%;
+  color: white;
+  font-family: PlutoSansCondBlack;
 }
 
 .keys span {
@@ -42,9 +70,7 @@ body {
     font-size: 1.2em;
   }
 
-.header #musicalnote {
-    font-size: 1.5em;
-  }
+
 
 .keys li:active span {
     background-color: aqua;
@@ -144,7 +170,7 @@ li {
     border-radius:0 5px 5px 5px
   }
 
-  /*Class trigerred when a key is pressed*/ 
+  /*Class trigerred by script.js when a key is pressed*/ 
   .pressed
   /* .black:active */
   {
@@ -158,44 +184,63 @@ li {
     
   }
 
-  .sustain-check{
-    display: flex;
-    justify-content: flex-start;
-    margin: 5% 0 -3% 3%;
-  }
 
-/* Medium devices (landscape tablets, 600px and up) */
-  @media only screen and (min-width: 600px){
+/* Second octave is showed in Medium devices (landscape tablets, 568px and up) */
+  @media only screen and (min-width: 568px){
    .keys li:nth-child(n+13):nth-child(-n+24) {
     display: block;
    }
   }
   
-  /*====== rotate the piano when orientation is portrait======*/
-  @media screen and (min-width: 600px) and (orientation: portrait) {
-   html { transform: rotate(-90deg); 
-            transform-origin: left top;
-            width: 100vh;
-            overflow-x: hidden;
-            position: absolute;
-            top: 100%;
-            left: 0;
-    }
-  } 
-
-  /*@medias for hide the letters when the piano is opened in a mobile
-    device or Ipads*/
-  @media screen and (max-width: 1600px) and (orientation: portrait) {
+  /*Hide keys letters and desktop instructions when the pinao is opened in mobile devices*/
+  @media screen and (min-width: 240px) and (max-width: 1024px)  {
     .piano-container .keys .letter {
       display: none;
     }
-  }
 
-  @media screen and (max-width: 823px) and (orientation: landscape) {
-    .piano-container .keys .letter {
+    #instructions {
       display: none;
     }
+    /*Please rotate the device for better experience */
+    .header #mobile-instruction {
+      display: block;
+    }
   }
+
+   /*When the piano is opened in a mobile device, some items have to be resized*/
+   @media screen and (min-width: 240px) and (max-width: 1024px) and (orientation: landscape) {
+    .header #mobile-instruction {
+      display: none;
+     }
+
+     .piano-container .keys {
+       height: 12em;
+     }
+     .keys .white {
+       height: 12em;
+     }
+
+     .keys .black {
+      height: 6em;
+    }
+
+    .sustain-check {
+      margin: 5% 0 -8% 3%;
+    }
+
+    .header #musicalnote {
+      font-size: 1.5em;
+      margin-bottom: -1%;
+    }
+
+    .header { 
+      margin-bottom: -10%;
+    }
+
+    .header #message {
+      display: block;
+     } 
+   }
 
   
 
@@ -203,4 +248,3 @@ li {
 
   
 
- 
