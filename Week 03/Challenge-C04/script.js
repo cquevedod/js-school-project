@@ -44,6 +44,50 @@ let colors = ["aqua", "chartreuse", "blue", "red",
           decreaseVolume(audio);         
         } 
     });
+
+    key.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        keyCode = e.target.getAttribute("data-key");
+        var keynumber = document.querySelector(`.key[data-key="${keyCode}"]`);
+        var audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+        if (!keynumber) return;
+        if (audio === null) return;
+        audio.currentTime = 0; // prevent overlapping in sounds
+        audio.volume = 1;
+        audio.play();
+        keynumber.classList.add('pressed');
+    })
+
+    key.addEventListener('touchend', function (e) {
+      e.preventDefault(); 
+      keyCode = e.target.getAttribute("data-key");
+      var keynumber = document.querySelector(`.key[data-key="${keyCode}"]`);
+      var audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+      if (!keynumber) return;
+      if (audio === null) return;
+      keynumber.classList.remove('pressed');
+      var checkBox = document.getElementById("sustain");
+      if (checkBox.checked == true) {
+          audio.play();
+      } else {
+        decreaseVolume(audio);         
+      } 
+  });
+
+//   key.addEventListener('touchmove', function(e) {
+//     e.preventDefault();
+//     let repeat = event.repeat;
+//     if (repeat) { return; }
+//     keyCode = e.target.getAttribute("data-key");
+//     var keynumber = document.querySelector(`.key[data-key="${keyCode}"]`);
+//     var audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+//     if (!keynumber) return;
+//     if (audio === null) return;
+//     audio.currentTime = 0; // prevent overlapping in sounds
+//     audio.volume = 1;
+//     audio.play();
+//     keynumber.classList.add('pressed');
+// })
   
   });
 
@@ -92,9 +136,13 @@ let colors = ["aqua", "chartreuse", "blue", "red",
    
    });
 
-/*--show musical notes when mousedown or keydown a key----*/
+  
+
+/*--show musical notes when mousedown, keydown or touch a key----*/
    document.addEventListener("keydown", showMusicalNotes);
    document.addEventListener('mousedown', showMusicalNotes);
+   document.addEventListener("touchstart", showMusicalNotes);
+   
 
  /*----------show musical notes ------------- */
 function showMusicalNotes (e) {
