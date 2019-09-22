@@ -41,18 +41,23 @@
 
       <div class="header">
          <h1>JS Piano Player</h1>
-         
-         <p>You can click in keys to play notes or use the keyboard: </p>
-         <h3>Keyboard controls:</h3>
-         <p>First octave: From "Q" to "U"</p>
-         <p>Second octave: from "Z" to "M"</p>
-         <p style="color:rgb(214, 19, 29);">Note: Some mobile devices just have the first octave for better UX</p>
+         <div id=instructions> 
+            <p>You can click in keys to play notes or use the keyboard: </p>
+            <h3>Keyboard controls:</h3>
+            <p>First octave: From "Q" to "U"</p>
+            <p>Second octave: from "Z" to "M"</p>
+            
+        </div>
+        <p id="mobile-instruction">Please rotate the device for better experience</p>
+        <p id="message">Thank you! Let's play!</p>
          <p id=musicalnote>--</p>
-         <div class="sustain-check">
+         
+      </div>
+
+      <div class="sustain-check">
          <span>Sustain</span>
             <input id="sustain" type="checkbox"/>
          </div>
-      </div>
 
    <div class="piano-container">
     <ul class="keys">
