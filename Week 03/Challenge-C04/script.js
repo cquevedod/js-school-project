@@ -23,7 +23,7 @@ let colors = ["aqua", "chartreuse", "blue", "red", "mediumblue", "yellow",
       
     });
 
-    /*--------------------FadeVolume on MouseUp------------- */
+    /*--------------------decreaseVolume on MouseUp------------- */
     key.addEventListener('mouseup', function (e) { 
         keyCode = e.target.getAttribute("data-key");
         var keynumber = document.querySelector(`.key[data-key="${keyCode}"]`);
@@ -36,12 +36,12 @@ let colors = ["aqua", "chartreuse", "blue", "red", "mediumblue", "yellow",
             audio.play();
         } else {
             var volume = 100;
-            var fadeVolume = setInterval(function() {
+            var decreaseVolume = setInterval(function() {
                 volume -= 10;
                 audio.volume = volume / 100;
                 console.log(volume);
                 if(volume === 0) {
-                    clearInterval(fadeVolume);
+                    clearInterval(decreaseVolume);
                   
                 }  
             }, 20);
@@ -75,7 +75,7 @@ let colors = ["aqua", "chartreuse", "blue", "red", "mediumblue", "yellow",
   
    });
 
-  /*--------------------FadeVolume on keyup------------- */
+  /*--------------------decreaseVolume on keyup------------- */
   document.addEventListener('keyup', function(e){
       var key = e.which || e.keyCode;
       var keystring = key.toString(); 
@@ -90,12 +90,12 @@ let colors = ["aqua", "chartreuse", "blue", "red", "mediumblue", "yellow",
             audio.play();
          } else {
             var volume = 100;
-            var fadeVolume = setInterval(function(){
+            var decreaseVolume = setInterval(function(){
                 volume -= 10;
                 audio.volume = volume / 100;
                 console.log(volume);
                 if(volume === 0) {
-                  clearInterval(fadeVolume);
+                  clearInterval(decreaseVolume);
 
                 }
             }, 20);
@@ -106,33 +106,39 @@ let colors = ["aqua", "chartreuse", "blue", "red", "mediumblue", "yellow",
 
    /*--------------------show musical notes ------------- */
 function showMusicalNotes (e) {
-  if (e.keyCode === undefined) {
-      let note = e.target.getAttribute("id");
-      if (notes.includes(note)) {
-        document.getElementById("musicalnote").innerHTML =`${note}`;
-        document.getElementById("musicalnote").style.color = colors[notes.indexOf(note)];
+      if (e.keyCode === undefined) {
+        let note = e.target.getAttribute("id");
+        if (notes.includes(note)) {
+          showText(); 
+          document.getElementById("musicalnote").innerHTML =`${note}`;
+          let indexNote = notes.indexOf(note)
+          document.getElementById("musicalnote").style.color = colors[indexNote];
+          // document.getElementById(`${note}`).style.color = colors[indexNote];
+
+        } else { return; }
 
       } else {
-        return;
-        }
+        e = e || window.event;
+        var key = e.which || e.keyCode;
+        var keystring = key.toString();
+        if (keycodes.includes(keystring)) {
+          showText();
+          var indexNote =  keycodes.indexOf(keystring);
+          console.log(indexNote);
+          var musicalnote = notes[indexNote]; 
+          document.getElementById("musicalnote").innerHTML =`${musicalnote}`;
+          document.getElementById("musicalnote").style.color = colors[indexNote];
+          // document.getElementById(`${musicalnote}`).style.color = colors[indexNote];
+        } else { return; }
+      }
 
-  } else {
-    e = e || window.event;
-    var key = e.which || e.keyCode;
-    var keystring = key.toString();
-    if (keycodes.includes(keystring)) {
-      var noteindex =  keycodes.indexOf(keystring);
-      console.log(noteindex);
-      var musicalnote = notes[noteindex]; 
-      console.log(`La nota correspondiente es ${musicalnote}`);
-      document.getElementById("musicalnote").innerHTML =`${musicalnote}`;
-      document.getElementById("musicalnote").style.color = colors[noteindex];
-    } else {
-        return;
+ }
+
+    /*--------------------show an indication text about musical notes------------- */
+    function showText(){
+      document.getElementById("message").innerHTML =`See below the notes pressed`;
+
     }
-  }
-
-}
 
 
   document.addEventListener("keydown", showMusicalNotes);
