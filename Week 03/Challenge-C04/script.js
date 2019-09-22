@@ -13,20 +13,23 @@ let colors = ["aqua", "chartreuse", "blue", "red",
                "palegreen", "#ff0084", "#bce0ee", "#ff920a",
                "1f3b08", "ff4805", "#207ce5" ];
 
+function playSound (keycode) {
+      var audio = document.querySelector(`audio[data-key="${keycode}"]`);
+      if (audio === null) return;
+      audio.currentTime = 0; // prevent overlapping in sounds
+      audio.volume = 1;
+      audio.play();
+}             
 
 /*-------------playSound on mousedown--------- */
   keys.forEach(key => {
     key.addEventListener('mousedown', function (e) { 
         keyCode = e.target.getAttribute("data-key");
         var keynumber = document.querySelector(`.key[data-key="${keyCode}"]`);
-        var audio = document.querySelector(`audio[data-key="${keyCode}"]`);
         if (!keynumber) return;
-        if (audio === null) return;
-        audio.currentTime = 0; // prevent overlapping in sounds
-        audio.volume = 1;
-        audio.play();
         keynumber.classList.add('pressed');
-      
+        playSound(keyCode);
+
     });
 
     /*---------decreaseVolume on MouseUp------ */
@@ -47,15 +50,13 @@ let colors = ["aqua", "chartreuse", "blue", "red",
 
     key.addEventListener('touchstart', function(e) {
         e.preventDefault();
+        let repeat = event.repeat;
+        if (repeat) { return; }
         keyCode = e.target.getAttribute("data-key");
         var keynumber = document.querySelector(`.key[data-key="${keyCode}"]`);
-        var audio = document.querySelector(`audio[data-key="${keyCode}"]`);
         if (!keynumber) return;
-        if (audio === null) return;
-        audio.currentTime = 0; // prevent overlapping in sounds
-        audio.volume = 1;
-        audio.play();
         keynumber.classList.add('pressed');
+        playSound(keyCode);
     })
 
     key.addEventListener('touchend', function (e) {
@@ -103,13 +104,9 @@ let colors = ["aqua", "chartreuse", "blue", "red",
       console.log(keycodes.includes(keystring));
       if(keycodes.includes(keystring)) {
          var keynumber = document.querySelector(`.key[data-key="${key}"]`);
-         var audio = document.querySelector(`audio[data-key="${key}"]`);
          if (!keynumber) return;
-         if (audio === null) return;
-         audio.volume = 1;
-         audio.currentTime = 0;
-         audio.play();
          keynumber.classList.add('pressed');
+         playSound(key);
        } else {
             return; // Avoid error when off piano key is pressed
        }
