@@ -1,14 +1,20 @@
-var keys = Array.from(document.querySelectorAll('.key')); /*Save in an array, the objects whose class is "key" */
-let keycodes = keys.map((key) => key.dataset.key); /*Obtain the data keys and save in an array */
-let notes = keys.map((key) => key.id); /*Save the musical notes in array "notes" */
+/*Save in an array, the objects whose class is "key" */
+var keys = Array.from(document.querySelectorAll('.key'));
+/*Obtain the data keys and save in an array */ 
+let keycodes = keys.map((key) => key.dataset.key);
+/*Save the musical notes in array "notes" */ 
+let notes = keys.map((key) => key.id); 
 
-let colors = ["aqua", "chartreuse", "blue", "red", "mediumblue", "yellow",
-              "orangered", "dodgerblue", "deepskyblue", "deeppink", "greenyellow",
-              "spreengreen", "aquamarine", "coral", "darkgrey", "tomato", "sporinggreen",
-              "palegreen", "#ff0084", "#bce0ee", "#ff920a", "1f3b08", "ff4805", "#207ce5" ];
+let colors = ["aqua", "chartreuse", "blue", "red",
+              "mediumblue", "yellow", "orangered", 
+              "dodgerblue", "deepskyblue", "deeppink",
+              "greenyellow", "spreengreen", "aquamarine",
+               "coral", "darkgrey", "tomato", "sporinggreen",
+               "palegreen", "#ff0084", "#bce0ee", "#ff920a",
+               "1f3b08", "ff4805", "#207ce5" ];
 
 
-/*--------------------playSound on mousedown------------- */
+/*-------------playSound on mousedown--------- */
   keys.forEach(key => {
     key.addEventListener('mousedown', function (e) { 
         keyCode = e.target.getAttribute("data-key");
@@ -23,7 +29,7 @@ let colors = ["aqua", "chartreuse", "blue", "red", "mediumblue", "yellow",
       
     });
 
-    /*--------------------decreaseVolume on MouseUp------------- */
+    /*---------decreaseVolume on MouseUp------ */
     key.addEventListener('mouseup', function (e) { 
         keyCode = e.target.getAttribute("data-key");
         var keynumber = document.querySelector(`.key[data-key="${keyCode}"]`);
@@ -35,30 +41,21 @@ let colors = ["aqua", "chartreuse", "blue", "red", "mediumblue", "yellow",
         if (checkBox.checked == true) {
             audio.play();
         } else {
-            var volume = 100;
-            var decreaseVolume = setInterval(function() {
-                volume -= 10;
-                audio.volume = volume / 100;
-                console.log(volume);
-                if(volume === 0) {
-                    clearInterval(decreaseVolume);
-                  
-                }  
-            }, 20);
-          
+          decreaseVolume(audio);         
         } 
     });
   
   });
 
-  /*--------------------playSound on keydown------------- */
+  /*------------playSound on keydown----------- */
   document.addEventListener('keydown', function (e) {
       // avoid repeating keystroke.
       let repeat = event.repeat;
       if (repeat) { return; }
       e = e || window.event;
       var key = e.which || e.keyCode;
-      var keystring = key.toString();               /*convert datakey to String to properly compare with strings of object keycodes */
+       /*convert datakey to String to properly compare with strings of object keycodes */
+      var keystring = key.toString();              
       console.log(keycodes.includes(keystring));
       if(keycodes.includes(keystring)) {
          var keynumber = document.querySelector(`.key[data-key="${key}"]`);
@@ -75,7 +72,7 @@ let colors = ["aqua", "chartreuse", "blue", "red", "mediumblue", "yellow",
   
    });
 
-  /*--------------------decreaseVolume on keyup------------- */
+  /*---------decreaseVolume on keyup--------- */
   document.addEventListener('keyup', function(e){
       var key = e.which || e.keyCode;
       var keystring = key.toString(); 
@@ -89,22 +86,17 @@ let colors = ["aqua", "chartreuse", "blue", "red", "mediumblue", "yellow",
          if (checkBox.checked == true) {
             audio.play();
          } else {
-            var volume = 100;
-            var decreaseVolume = setInterval(function(){
-                volume -= 10;
-                audio.volume = volume / 100;
-                console.log(volume);
-                if(volume === 0) {
-                  clearInterval(decreaseVolume);
-
-                }
-            }, 20);
+            decreaseVolume(audio);  
            }  
        }
    
    });
 
-   /*--------------------show musical notes ------------- */
+/*--show musical notes when mousedown or keydown a key----*/
+   document.addEventListener("keydown", showMusicalNotes);
+   document.addEventListener('mousedown', showMusicalNotes);
+
+ /*----------show musical notes ------------- */
 function showMusicalNotes (e) {
       if (e.keyCode === undefined) {
         let note = e.target.getAttribute("id");
@@ -134,14 +126,24 @@ function showMusicalNotes (e) {
 
  }
 
-    /*--------------------show an indication text about musical notes------------- */
-    function showText(){
-      document.getElementById("message").innerHTML =`See below the notes pressed`;
+/*-----decreaseVolume function (piano default mode)-----*/
+function decreaseVolume (sound) {
+      if (sound === null) return;
+      var volume = 100;
+      var decreaseVol = setInterval(function() {
+          volume -= 10;
+          sound.volume = volume / 100;
+          console.log(volume);
+          if(volume === 0) {
+            clearInterval(decreaseVol);       
+          }  
+      }, 20);
+}
 
-    }
+/*------show an indication text about musical notes------------- */
+function showText() {
+    document.getElementById("message").innerHTML =`See below the notes pressed`;
+}
 
-
-  document.addEventListener("keydown", showMusicalNotes);
-  document.addEventListener('mousedown', showMusicalNotes);
 
 
