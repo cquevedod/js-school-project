@@ -1,51 +1,79 @@
-/*
-Style based in: https://codepen.io/zastrow/pen/oDBki
-*/
+/* Style based in: https://codepen.io/zastrow/pen/oDBki */
+
+@import "pluto-fonts.css";
+@import "font-awesome.css";
 
 * {
     box-sizing:border-box
   }
   
-
-  body {
+body {
     margin:0;
     background:#000;
-    /* overflow: hidden; */
-  }
+    font-family: Arial, Helvetica, sans-serif;
+}
 
+.header {
+  color: #eee;
+  position: relative;
+  margin-bottom: -10.5%;
+  font-family: PlutoSansCondBlack;
+  text-align: center;
+}
 
-  .keys li span {
+.keys span {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.keys li span {
     display: inline-block;
     position: relative;
-    /* padding-top: 6em; */
+    margin-top: -1.5em; 
     display: flex;
     flex-direction: column;
     text-align: center;
-    
+    font-family: PlutoSansCondRegular;
+    font-size: 1.2em;
   }
 
-  .keys .black {
-    padding-top: 6em;
+.header #musicalnote {
+    font-size: 1.5em;
+  }
+
+.keys li:active span {
+    background-color: aqua;
+  }
+
+ .keypressed {
+    background-color: aqua;
+  }
+
+ .keys .black {
+    padding-bottom: -2em;
     color: white;
   }
 
-  .keys .white {
-    color:rgb(35, 16, 206);
-    padding-top: 14em;
-  }
+.keys .white {
+    color: rgb(2, 17, 17);
+    padding-top: 2em;
+}
 
-  .keys li:nth-child(n+13):nth-child(-n+24) {
+.keys li:nth-child(n+13):nth-child(-n+24) {
     display: none;
-  }
+}
 
- 
-  .keys {
+
+.keys {
     height:18.875em;
     width:auto;
-    margin:10em auto 0;
+    margin:4% auto 1%;
     padding:3em 0 3em;
-    position:relative;
-    border:2px solid #0f2ac5; /*#160801 */
     border-radius:1em;
     background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)),url(/img/musical-notes.png);
     box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5);
@@ -53,26 +81,24 @@ Style based in: https://codepen.io/zastrow/pen/oDBki
     flex-direction: row;
     justify-content: center;
     align-content: center;
-  }
+}
   
-  .keys::after {
+.keys::after {
     clear: both;
     content: "";
     display: table;
-  }
+}
   
-  li {
+li {
     margin:0;
     padding:0;
     list-style:none;
-    position:relative;
-    float:left;
     width: auto;
-  }
+}
   
   .keys .white {
     height:16em;
-    width:4em;
+    width:4em; 
     z-index:1;
     border-left:1px solid #bbb;
     border-bottom:1px solid #bbb;
@@ -89,9 +115,9 @@ Style based in: https://codepen.io/zastrow/pen/oDBki
     background:linear-gradient(to bottom,#fff 0%,#e9e9e9 100%)
   } 
   
-  .black {
+  .keys .black {
     height:8em;
-    width:2em;
+    width:2em; 
     margin:0 0 0 -1em;
     z-index:2;
     border:1px solid #000;
@@ -100,16 +126,15 @@ Style based in: https://codepen.io/zastrow/pen/oDBki
     background:linear-gradient(45deg,#222 0%,#555 100%);
   }
   
-  /* .black.pressed {
+   .keys .black:active{
     box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -2px 2px 3px rgba(0,0,0,0.6) inset,0 1px 2px rgba(0,0,0,0.5);
     background:linear-gradient(to right,#444 0%,#222 100%)
   }
-   */
+   
   .a,.b,.d,.e,.g {
-    margin:0 0 0 -1em;
+    margin:0 0 0 -1em; /* margin:0 0 0 -1em; */
   }
 
-  
   .keys li:first-child {
     border-radius:5px 0 5px 5px
     
@@ -120,8 +145,8 @@ Style based in: https://codepen.io/zastrow/pen/oDBki
   }
 
   /*Class trigerred when a key is pressed*/ 
-  .pressed,
-  .black:active
+  .pressed
+  /* .black:active */
   {
     transform: scale(.95);
     border-color: #0a0c0e;
@@ -133,13 +158,49 @@ Style based in: https://codepen.io/zastrow/pen/oDBki
     
   }
 
-  
+  .sustain-check{
+    display: flex;
+    justify-content: flex-start;
+    margin: 5% 0 -3% 3%;
+  }
 
-/* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px){
+/* Medium devices (landscape tablets, 600px and up) */
+  @media only screen and (min-width: 600px){
    .keys li:nth-child(n+13):nth-child(-n+24) {
     display: block;
    }
   }
   
-  /*Think a way more mantainable */ 
+  /*====== rotate the piano when orientation is portrait======*/
+  @media screen and (min-width: 600px) and (orientation: portrait) {
+   html { transform: rotate(-90deg); 
+            transform-origin: left top;
+            width: 100vh;
+            overflow-x: hidden;
+            position: absolute;
+            top: 100%;
+            left: 0;
+    }
+  } 
+
+  /*@medias for hide the letters when the piano is opened in a mobile
+    device or Ipads*/
+  @media screen and (max-width: 1600px) and (orientation: portrait) {
+    .piano-container .keys .letter {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 823px) and (orientation: landscape) {
+    .piano-container .keys .letter {
+      display: none;
+    }
+  }
+
+  
+
+
+
+  
+
+ 
