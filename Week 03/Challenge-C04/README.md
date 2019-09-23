@@ -46,6 +46,7 @@ For me this was the best part of the Challenge, I really enjoyed it. At first I 
 I divided this part into two files: functions.js and listeners.js.
 
 **functions.js**
+
 Basically here are the functions used by the listeners to be able to carry out the tasks of reproducing the sounds with the mouse, keyboard and touch events.
 
 What I found most interesting is that as I reviewed the code I found new ways to optimize it. I even think I did some functional programming, specifically in this code section of the file in question:
