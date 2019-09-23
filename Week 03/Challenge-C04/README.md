@@ -34,7 +34,7 @@ Below you can see two screenshots of what the interface looks like in Desktop an
 
 ![Desktop view](screenshots/desktopview.PNG)
 
-In the previous view you can see that each piano key has a letter of the assigned computer keyboard, this in order to facilitate the user experience.
+In the previous view you can see that **each piano key has a key of the real-world computer keyboard**, this is for facilitate the user experience.
 
 **Mobile View:**
 
