@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Piano Player</title>
     <link rel="stylesheet" href="css/style.css">  
+    <link rel="stylesheet" href="css/checkbox.css">  
 </head>
 <body>
       <!-- Audios of the piano below-->
@@ -46,7 +47,7 @@
             <h3>Keyboard controls:</h3>
             <p>First octave: From "Q" to "U"</p>
             <p>Second octave: from "Z" to "M"</p>
-            
+            <p>Samples taken from: <a href="https://github.com/felipefialho/piano/tree/master/src/medias" target="_blank">https://github.com/felipefialho/piano/tree/master/src/medias</a></p>
         </div>
         <p id="mobile-instruction">Please rotate the device for better experience</p>
         <p id="message">Thank you! Let's play!</p>
@@ -54,11 +55,17 @@
          
       </div>
 
+      <!-- CheckBox-->
       <div class="sustain-check">
-         <span>Sustain</span>
-            <input id="sustain" type="checkbox"/>
+         <section title=".slideThree">
+            <span id="sustain-text">Sustain</span>
+            <div class="slideThree">  
+              <input type="checkbox" value="None" id="slideThree" name="check" checked/>
+              <label for="slideThree"></label>
+            </div>
+          </section>
          </div>
-
+         
    <div class="piano-container">
     <ul class="keys">
 
