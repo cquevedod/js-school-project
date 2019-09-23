@@ -1,4 +1,3 @@
-
 /*-------------playSound on mousedown--------- */
   keys.forEach(key => {
     key.addEventListener('mousedown', function (e) { 
@@ -16,7 +15,7 @@
         if (!pianoKey) return;
         if (audio === null) return;
         pianoKey.classList.remove('pressed');
-        var checkBox = document.getElementById("sustain");
+        var checkBox = document.getElementById('slideThree');
         if (checkBox.checked == true) {
             audio.play();
         } else {
@@ -45,7 +44,7 @@
         if (!pianoKey) return;
         if (audio === null) return;
         pianoKey.classList.remove('pressed');
-        var checkBox = document.getElementById("sustain");
+        var checkBox = document.getElementById('slideThree');
         if (checkBox.checked == true) {
             audio.play();
         } else {
@@ -62,7 +61,6 @@
         if (repeat) { return; }
         e = e || window.event;
         var key = e.which || e.keyCode;
-        /*convert datakey to String to properly compare with strings of object keycodes */
         var keystring = key.toString();              
         console.log(keycodes.includes(keystring));
         if(keycodes.includes(keystring)) {
@@ -86,7 +84,7 @@
           if (!pianoKey) return;
           if (audio == null) return;
           pianoKey.classList.remove('pressed');
-          var checkBox = document.getElementById('sustain');
+          var checkBox = document.getElementById('slideThree');
           if (checkBox.checked == true) {
               audio.play();
           } else {
@@ -95,7 +93,6 @@
         }
     
    });
-
 
 /*--show musical notes when mousedown, keydown or touch a key----*/
    document.addEventListener("keydown", showMusicalNotes);
