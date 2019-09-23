@@ -34,6 +34,7 @@ Below you can see two screenshots of what the interface looks like in Desktop an
 
 ![Desktop view](screenshots/desktopview.PNG)
 
+In the previous view you can see that each piano key has a letter of the assigned computer keyboard, this in order to facilitate the user experience.
 
 **Mobile View:**
 
@@ -76,10 +77,12 @@ In this file I have nine listeners:
  In the following image you can see what i'm talking about 
 
 **Desktop:**
+
 ![Musical Note Desktop](screenshots/musicalnote-desktop.PNG)
 
 
 **Mobile:**
+
 ![Musical Note Mobile](screenshots/musicalnote-mobile.PNG)
 
  **Note:** This piano have the C2 and C3 octaves
