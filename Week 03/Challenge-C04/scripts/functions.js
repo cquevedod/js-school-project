@@ -1,12 +1,10 @@
-/*Save in an array, the objects whose class is "key" */
 var keys = Array.from(document.querySelectorAll('.key'));
-/*Obtain the data keys and save in an array */ 
 let keycodes = keys.map((key) => key.dataset.key);
 /*Save the musical notes in array "notes" */ 
 let notes = keys.map((key) => key.id); 
 
 let colors = ["aqua", "chartreuse", "blue", "red",
-              "mediumblue", "yellow", "orangered", 
+              "orange", "yellow", "orangered", 
               "dodgerblue", "deepskyblue", "deeppink",
               "greenyellow", "spreengreen", "aquamarine",
                "coral", "darkgrey", "tomato", "sporinggreen",
@@ -30,6 +28,29 @@ function getObjectOf(tag, atrr, event) {
          return objectSelector;}
   }
  
+/*-----playSound function-----*/
+function playSound (keycode) {
+    var audio = document.querySelector(`audio[data-key="${keycode}"]`);
+    if (audio === null) return;
+    audio.currentTime = 0; // prevent overlapping in sounds
+    audio.volume = 1;
+    audio.play();
+}   
+
+/*-----decreaseVolume function (piano default mode)-----*/
+function decreaseVolume (sound) {
+    if (sound === null) return;
+    var volume = 100;
+    var decreaseVol = setInterval(function() {
+        volume -= 10;
+        sound.volume = volume / 100;
+        console.log(volume);
+        if(volume === 0) {
+          clearInterval(decreaseVol);       
+        }  
+    }, 20);
+}
+
  /*----------show musical notes ------------- */
  function showMusicalNotes (e) {
     if (e.keyCode === undefined) {
@@ -52,33 +73,9 @@ function getObjectOf(tag, atrr, event) {
         var musicalnote = notes[indexNote]; 
         document.getElementById("musicalnote").innerHTML =`${musicalnote}`;
         document.getElementById("musicalnote").style.color = colors[indexNote];
-        // document.getElementById(`${musicalnote}`).style.color = colors[indexNote];
       } else { return; }
     }
 
-}
-
-/*-----playSound function-----*/
-function playSound (keycode) {
-    var audio = document.querySelector(`audio[data-key="${keycode}"]`);
-    if (audio === null) return;
-    audio.currentTime = 0; // prevent overlapping in sounds
-    audio.volume = 1;
-    audio.play();
-}   
-
-/*-----decreaseVolume function (piano default mode)-----*/
-function decreaseVolume (sound) {
-    if (sound === null) return;
-    var volume = 100;
-    var decreaseVol = setInterval(function() {
-        volume -= 10;
-        sound.volume = volume / 100;
-        console.log(volume);
-        if(volume === 0) {
-          clearInterval(decreaseVol);       
-        }  
-    }, 20);
 }
 
 /*------show an indication text about musical notes------------- */
