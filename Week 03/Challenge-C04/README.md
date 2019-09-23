@@ -26,7 +26,7 @@ Finally, a header was added containing the instructions to play the piano on a c
 
 In this part of the project styles were added to each key so that the illusion of when a key is pressed is seen.
 
-Three media queries were also added to the **[style.css](css/style.css]** file exclusively for Responsive design and the "Mobile First" approach.
+Three media queries were also added to the **[style.css](css/style.css)** file exclusively for Responsive design and the "Mobile First" approach.
 
 Below you can see two screenshots of what the interface looks like in Desktop and Mobile:
 
