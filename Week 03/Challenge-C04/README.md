@@ -18,7 +18,7 @@ With the aim of designing the piano, this project was divided into three parts: 
 
 First the piano was performed in the form of a list, where each "<li>" label corresponds to a piano key. This piano is made up of two octaves, that is, two sections of twelve keys, seven white and five black in each octave. The sections were duly separated at the code level, which facilitates their readability.
 
-Then the references to the audio files in the index.html file were preloaded.
+Then the references to the audio samples in the **[index.html](index.html)** file were preloaded.
 
 Finally, a header was added containing the instructions to play the piano on a computer. A checkbox was also added to enable or disable "Sustained" mode.
 
@@ -26,7 +26,7 @@ Finally, a header was added containing the instructions to play the piano on a c
 
 In this part of the project styles were added to each key so that the illusion of when a key is pressed is seen.
 
-Three media queries were also added to the style.css file exclusively for Responsive design and the "Mobile First" approach.
+Three media queries were also added to the **[style.css](css/style.css]** file exclusively for Responsive design and the "Mobile First" approach.
 
 Below you can see two screenshots of what the interface looks like in Desktop and Mobile:
 
@@ -46,7 +46,7 @@ For me this was the best part of the Challenge, I really enjoyed it. At first I 
 
 I divided this part into two files: functions.js and listeners.js.
 
-**functions.js**
+**[functions.js](scripts/functions.js)**
 
 Basically here are the functions used by the listeners to be able to carry out the tasks of reproducing the sounds with the mouse, keyboard and touch events.
 
@@ -56,7 +56,7 @@ What I found most interesting is that as I reviewed the code I found new ways to
 
 ![Code Snippet](screenshots/code-snippet.PNG)
 
-**listeners.js**
+**[listeners.js](scripts/listeners.js)**
 
 In this file I have nine listeners: 
 
