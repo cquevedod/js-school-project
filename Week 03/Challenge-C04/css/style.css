@@ -14,9 +14,9 @@ body {
 }
 
 .header {
-  color: #eee;
+  color: #eee; 
   position: relative;
-  margin-bottom: -6.5%;
+  margin-bottom: 1%;
   font-family: PlutoSansCondBlack;
   text-align: center;
 }
@@ -41,16 +41,31 @@ body {
 }
 
 .header #instructions h3 {
-  color: rgb(230, 73, 16);
+  color: #27ae60;
 }
 
 .sustain-check{
   display: flex;
   position: relative;
-  justify-content: flex-start;
-  margin: 5% 0 -3% 3%;
+  /* flex-wrap: nowrap; */
+  justify-content: flex-end;
+  margin: 5% 0 -9% 3%;
   color: white;
   font-family: PlutoSansCondBlack;
+}
+
+#sustain-text {
+  align-items: center;
+  margin-top: 1%;
+  margin-left: -10%; 
+}
+
+.sustain-check section {
+  margin-right: 2%;
+  margin-bottom: 2%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
 }
 
 .keys span {
@@ -162,7 +177,7 @@ li {
   }
    
   .a,.b,.d,.e,.g {
-    margin:0 0 0 -1em; /* margin:0 0 0 -1em; */
+    margin:0 0 0 -1em; 
   }
 
   .keys li:first-child {
@@ -176,7 +191,7 @@ li {
 
   /*Class trigerred by script.js when a key is pressed*/ 
   .pressed
-  /* .black:active */
+  
   {
     transform: scale(.95);
     border-color: #0a0c0e;
@@ -187,7 +202,6 @@ li {
     -o-transition: 150ms ease-in-out;
     
   }
-
 
 /* Second octave is showed in Medium devices (landscape tablets, 568px and up) */
   @media only screen and (min-width: 568px){
@@ -205,7 +219,7 @@ li {
     #instructions {
       display: none;
     }
-    /*Please rotate the device for better experience */
+    
     .header #mobile-instruction {
       display: block;
     }
@@ -230,6 +244,10 @@ li {
 
     .sustain-check {
       margin: 5% 0 -8% 3%;
+    }
+
+    .sustain-check section {
+      margin-bottom: -0.5%;
     }
 
     .header #musicalnote {
