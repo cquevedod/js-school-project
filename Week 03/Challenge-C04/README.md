@@ -4,7 +4,7 @@
 - Use event listener for add sounds of notes in a piano design 
 
 - Build all design with CSS and HTML
-- Add listeners for launch all sounds, found the sound    resources in the notes folder (Download here)
+- Add listeners for launch all sounds, found the sound    resources in the notes folder **[Download here](https://drive.google.com/file/d/1dYoEl0dqEjN3JXkqikvZus-_Ig0x7ntq/view?usp=sharing)**
 - Enable click or keyboard events for proper user experience
 - Push all the example in your GitHub repo
 
@@ -34,7 +34,7 @@ Below you can see two screenshots of what the interface looks like in Desktop an
 
 ![Desktop view](screenshots/desktopview.PNG)
 
-In the previous view you can see that **each piano key has a key of the real-world computer keyboard**, this is for facilitate the user experience.
+In the previous view you can see that **each piano key has a key of the real-world computer keyboard assigned**, this is for facilitate the user experience.
 
 **Mobile View:**
 
