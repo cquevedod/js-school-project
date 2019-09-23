@@ -37,7 +37,7 @@ Below you can see two screenshots of what the interface looks like in Desktop an
 
 **Mobile View:**
 
-![Mobile view](screenshots/mobileview.PNG)
+![Mobile view](screenshots/mobileview.png)
 
 ## JavaScript
 
@@ -52,7 +52,7 @@ What I found most interesting is that as I reviewed the code I found new ways to
 
 **Code snippet of two functions from functions.js:**
 
-![Code Snippet](screenshots/code-snippet.png)
+![Code Snippet](screenshots/code-snippet.PNG)
 
 **listeners.js**
 
@@ -75,11 +75,11 @@ In this file I have nine listeners:
  In the following image you can see what i'm talking about 
 
 **Desktop:**
-![Musical Note Desktop](screenshots/musicalnote-desktop.png)
+![Musical Note Desktop](screenshots/musicalnote-desktop.PNG)
 
 
 **Mobile:**
-![Musical Note Mobile](screenshots/musicalnote-mobile.png)
+![Musical Note Mobile](screenshots/musicalnote-mobile.PNG)
 
  **Note:** This piano have the C2 and C3 octaves
 
