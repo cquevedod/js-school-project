@@ -40,6 +40,10 @@ body {
   margin-bottom: -3%;
 }
 
+.header #instructions h3 {
+  color: rgb(230, 73, 16);
+}
+
 .sustain-check{
   display: flex;
   position: relative;
