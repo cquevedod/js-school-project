@@ -1,0 +1,27 @@
+{
+  "name": "challenge-c05",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "get-info": "node ./getbookinfo.js"
+  },
+  "author": "Carlos Quevedo",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.6.2",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.0",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^1.4.0",
+    "node-fetch": "^2.6.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.6.2",
+    "mustache": "^3.1.0"
+  }
+}
