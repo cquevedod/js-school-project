@@ -1,30 +1,64 @@
-
   /*By default, JobSity text is not shown in mobile devices */
-  @media only screen and (min-width: 768px){
+@media only screen and (min-width: 768px){
     .navbar-header #jobsity-text { display: inline;}
+
   }
 
-    @media screen and (max-width: 1280px){
+@media screen and (max-width: 767px) {
+    .column .cover {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+   }
+
+@media (min-width: 410px) {
+  .row .column {
+    max-width: calc(50% - 10px);
+  }
+}
+@media (min-width: 620px) {
+  .row .column {
+    max-width: calc(33.33333% - 10px);
+  }
+}
+@media (min-width: 830px) {
+  .row .column {
+    max-width: calc(25% - 10px);
+  }
+}
+@media (min-width: 1020px) {
+ .center-content .row .column { 
+  max-width: calc(70% - 10px);
+ }
+}
+
+
+@media screen and (max-width: 1280px){
     .sidebar {
        width: 15%; 
     }
-     .right-sidebar { float: right;} 
     .center-content {
       width: 70%;
     }
   }  
   
-  @media screen and (min-width: 1280px){
+@media screen and (min-width: 1280px){
     .sidebar {
        width: 15%; 
     }
-     .right-sidebar { float: right;} 
+    
     .center-content {
       width: 70%;
     }
+
+    .logo-container {
+      width: auto;
+    }
   }  
 
-  @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     section.right-sidebar {
       display: none;
     }
@@ -35,17 +69,15 @@
   }
 
   
-  @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .left-sidebar {
       width: 100%;
       height: auto;
       position: relative;
     }
-    /* .left-sidebar {float: left;} */
     section.center-content {margin-left: 0; margin-right: 0;}
     .left-sidebar .left-items {text-align: center;}
   }
-  
   
   
   /* On small screens, set height to 'auto' for sidebar and grid */
@@ -72,10 +104,6 @@
     }
   }
 
-
-/* ===========================
-   ====== Media Queries for Books ======
-   =========================== */
 
   @media screen and (max-width: 650px) {
     .column {
