@@ -3,8 +3,8 @@
 @import "font-awesome.css";
 
 :root {
-  --cover-width: 88%;
-  --cover-height: 13.6em;
+  /* --cover-width: 88%;
+  --cover-height: 13.6em; */
   --author-padding: 2em;
 }
 
@@ -43,6 +43,10 @@ body {
 .navbar-header .logo-container {
   display: flex;
   flex-direction: row;
+  background-color: #FFFFFF; 
+  width: 12.6em;
+  align-items: center;
+
 }
 
 .navbar-header a {
@@ -78,12 +82,16 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-header #bookshelf {
   font-family: PlutoSansMedium;
   font-size: 20px;
   margin-top: 2px;
+  display: flex;
+  justify-content: left;
+  margin-left: -23.9em;
 }
 
 .navbar-header #book-box {
@@ -99,16 +107,22 @@ body {
   overflow: hidden;
   border: 1px solid #6EC1E4;
   border-radius: 21px 16px 16px 16px;
-  margin-left: 40.5%;
+  margin-right: -27em;
   margin-top: 1.2%;
-  width: 20%;
+  width: 17em;
+  height: 2.2em;
+  display: flex;
+  justify-content: right;
 }
 
 .search-container form {
   display: flex; 
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   align-content: center;
+  width: 17em;
+  height: 2.2em;
+  background-color: rgba(245, 246, 248, 0.51186);
 }
 
 .navbar-header .search-icon {
@@ -124,6 +138,10 @@ body {
   font-size: 0.8em;
   padding: 0.6em 0.2em;
   background: rgba(245, 246, 248, 0.51186);
+  width: 17em;
+  height: 2.2em;
+  border-radius: 21px 16px 16px 16px;
+  margin-left: 0.3em;
 }
 
 ::placeholder {
@@ -292,22 +310,21 @@ body {
 }
 
 .column {
-  display: flex;
-  flex-flow: row wrap;
   width: 20%;
   margin-bottom: 2%;
-  margin-right: 0;
 }
+
+
 
 .cover-info {
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  text-align: center;
-  margin-left: 0.5em;
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
   margin-top: 0.3em;
   margin-bottom: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cover-info::after,
@@ -367,8 +384,6 @@ body {
 }
 
 .cover img {
-  width: var(--cover-width);
-  height: var(--cover-height);
   margin-left: auto;
   margin-right: auto;
 }
