@@ -1,131 +1,186 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no"
+    />
+    <title>Jobsity Bookshelf</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/media-queries.css" />
+    <link rel="stylesheet" href="styles/info-on-click.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Jobsity Bookshelf</title>
-  <link rel="stylesheet" href="styles/style.css">
-  <link rel="stylesheet" href="styles/media-queries.css">
-  <link rel="stylesheet" href="styles/on-click-events.css">
-</head>
-
-<body>
-<!-- <div class="global-container"></div> -->
-  <nav class="navbar-header">
+  <body>
+    <nav class="navbar-header">
       <div class="logo-container">
-        <a class="navbar-logo" href="#"><img src="img/logo.png" alt="logo" class="logo"></a>
+        <a class="navbar-logo"
+          ><img href="#" src="img/logo.png" alt="logo" class="logo" id="joblogo"
+        /></a>
         <a href="#" id="text-box"><span id="jobsity-text">JOBSITY</span></a>
       </div>
-      <div class="nav-center-container"> 
+      <div class="nav-center-container">
         <a href="#" id="book-box"><span id="bookshelf">Bookshelf</span></a>
         <div class="search-container">
           <form action="#">
             <label for="search-field">
               <i class="fa fa-search search-icon"></i>
             </label>
-            <input class="search-box" type="text" placeholder="Search..." name="search" required="">
+            <input
+              class="search-box"
+              type="text"
+              placeholder="Search..."
+              name="search"
+              required=""
+            />
           </form>
         </div>
-      </div> 
+      </div>
       <div id="vertical-line"></div>
       <div class="login">
-          <a href="#">Jakob Treml&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-down angle-icon"></i></a>
-          <img src="img/avatar.png" alt="Avatar" class="avatar">
+        <a href="#"
+          >Jakob Treml&nbsp;&nbsp;&nbsp;<i
+            class="fa fa-angle-down angle-icon"
+          ></i
+        ></a>
+        <img src="img/avatar.png" alt="Avatar" class="avatar" />
       </div>
+    </nav>
 
-        
-  </nav>
-
-  <div class="content-container">
-
-    <!--Left side bar-->
-    <section class="left-sidebar sidebar">
-      <div class="left-items">
-        <p class="title">main</p>
-        <a href="">
-          <p><i class="fa fa-fw fa-globe"></i>quito</p>
-        </a>
-        <a href="">
-          <p><i class="fa fa-fw fa-globe"></i>cartagena</p>
-        </a>
-        <a href="">
-          <p><i class="fa fa-fw fa-globe"></i>medellín</p>
-        </a>
-        <a href="">
-          <p><i class="fa fa-fw fa-tablet-alt"></i>digital</p>
-        </a>
-        <a href="">
-          <p><i class="fa fa-fw fa-user-tag"></i>personal loans</p>
-        </a>
-        <a href="">
-          <p id="white"><i class="fa fa-tags"></i>new relases</p>
-        </a>
-        <p class="title">your books</p>
-        <a href="">
-          <p><i class="fa fa-fw fa-book-open"></i>readings</p>
-        </a>
-        <a href="">
-          <p><i class="fa fa-fw fa-history"></i>history</p>
-        </a>
-        <a href="">
-          <p><i class="fa fa-fw fa-bookmark"></i>read later</p>
-        </a>
-        <a href="">
-          <p><i class="fa fa-fw fa-heart"></i>favorites</p>
-        </a>
-      </div>
-
-    </section>
-    <!--Content-->
-    <section class="center-content">
-
-      <section class="top-container">
-        <div class="top-text">
-          <span id="title-left">
-            <p>New Releases</p>
-          </span>
-          <span id="title-center">
-            <p id="text-one">Releases Date</p>
-            <p id="text-two">Popularity</p>
-          </span>
-          <span id="title-right">
-            <p>
-              <i class="fa fa-fw fa-th-large"></i>
-              <i class="fa fa-fw fa-th-list"></i>
-            </p>
-          </span>
+    <div class="content-container">
+      <section class="left-sidebar sidebar">
+        <div class="left-items">
+          <p class="title">main</p>
+          <a href="">
+            <p><i class="fa fa-fw fa-globe"></i>quito</p>
+          </a>
+          <a href="">
+            <p><i class="fa fa-fw fa-globe"></i>cartagena</p>
+          </a>
+          <a href="">
+            <p><i class="fa fa-fw fa-globe"></i>medellín</p>
+          </a>
+          <a href="">
+            <p><i class="fa fa-fw fa-tablet-alt"></i>digital</p>
+          </a>
+          <a href="">
+            <p><i class="fa fa-fw fa-user-tag"></i>personal loans</p>
+          </a>
+          <a href="">
+            <p id="white"><i class="fa fa-tags"></i>new releases</p>
+          </a>
+          <p class="title">your books</p>
+          <a href="">
+            <p><i class="fa fa-fw fa-book-open"></i>readings</p>
+          </a>
+          <a href="">
+            <p><i class="fa fa-fw fa-history"></i>history</p>
+          </a>
+          <a href="">
+            <p><i class="fa fa-fw fa-bookmark"></i>read later</p>
+          </a>
+          <a href="">
+            <p><i class="fa fa-fw fa-heart"></i>favorites</p>
+          </a>
         </div>
       </section>
-      <!-- Rendered content here-->
-      <div id="bookshelfbooks" class="row">
 
-      </div>
-      <!-- center content end-->
-    </section>
-    <!-- Right sidebar-->
-    <section class="right-sidebar sidebar">
-      <div class="content-list">
-        <p class="title-list">most read books</p>
-        <ol class="font-list">
-          <li>&nbsp; Hooked: How to Build Habit-...</li>
-          <li>&nbsp; The Inevitable: Understandin...</li>
-          <li>&nbsp; Lean In: Women, Work, and t...</li>
-          <li>&nbsp; Bulding a Business When Th...</li>
-          <li>&nbsp; How Google Works</li>
-        </ol>
-      </div>
+      <section class="center-content">
+        <section class="top-container">
+          <div class="top-text">
+            <span id="title-left">
+              <p>New Releases</p>
+            </span>
+            <span id="title-center">
+              <p id="text-one">Releases Date</p>
+              <p id="text-two">Popularity</p>
+            </span>
+            <span id="title-right">
+              <p>
+                <i class="fa fa-fw fa-th-large"></i>
+                <i class="fa fa-fw fa-th-list"></i>
+              </p>
+            </span>
+          </div>
+        </section>
+        <!-- Rendered content here-->
+        <div id="bookshelfbooks" class="row">
+          <script id="book-template" type="text/x-mustache-template">
+              <div class="column">
+                <div class="cover">
+                  <div class="onClickTextOverImage" style="background-image:url({{thumbnail}});">
+                    <div class="info-over-cover">
+                      <img src="img/rate-book/heart.png" class="icon-up-left" />
+                      <img src="img/rate-book/opened-book.png" class="icon-center" />
+                      <img src="img/rate-book/bookmark.png" class="icon-up-right" />
+                      <p class="rating-book">rate this book</p>
+                      <div class="star-rating-book rate">
+                         {{{averageRating}}}
+                      </div>
+                    </div>
+                    <i class="fas fa-caret-left arrow"></i>
+                    <div id="bookModalInfo" class="bookModalInfo">
+                      <div id="modalHeader"> 
+                        <div id="titleAndYear">  
+                            <p class="titleModal" style="margin:1% 0;">{{ title }}</p>
+                            <p class="yearModal">{{ publishedDate }}</p>
+                        </div>    
+                        <p class="authorModal" style="margin:1% 0;">
+                            Novel by<span id="color-word"> {{ authors }}</span>
+                        </p>
+                        <p class="pageCount">{{ pageCount }} pages</p>
+                    </div>   
+                      <p id="summaryTitle">SUMMARY</p>
+                      <article id="summary" style="margin:5% 0;">
+                        {{ description }}
+                      </article>
+                      <p id="ratingTitle" style="margin:1% 0;">RATING</p>
+                      <div id="average-rating" style="display: none">{{ averageRating }}</div>
+                      <div class="star-rating rate">
+                          {{{averageRating}}}
+                      </div>
+                      <p style="margin:6% 0;"></p>
+                      <p class="recommend" style="margin:1% 0;">RECOMMENDED BY</p>
+                      <div class="recommended">
+                        <img src="img/recommended/user1.png" />
+                        <img src="img/recommended/user2.png" />
+                        <img src="img/recommended/user3.png" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cover-info">
+                    <p class="book-title">{{ title }}</p>
+                    <p class="book-author">{{ authors }}</p>
+                    <div class="star-rating rate">
+                        {{{averageRating}}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </script>
 
-    </section>
+        </div>
 
-  </div>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	
-  <script src="/dist/scripts/app.min.js"></script>
-  
+        <!-- center content end-->
+      </section>
 
-  <script src="https://kit.fontawesome.com/7cf521b4cf.js"></script>
-
-</body>
-
+      <section class="right-sidebar sidebar">
+        <div class="content-list">
+          <p class="title-list">most read books</p>
+          <ol class="font-list">
+            <li>&nbsp; Hooked: How to Build Habit-...</li>
+            <li>&nbsp; The Inevitable: Understandin...</li>
+            <li>&nbsp; Lean In: Women, Work, and t...</li>
+            <li>&nbsp; Bulding a Business When Th...</li>
+            <li>&nbsp; How Google Works</li>
+          </ol>
+        </div>
+      </section>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/dist/scripts/app.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cf521b4cf.js"></script>
+  </body>
 </html>

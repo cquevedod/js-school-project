@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "node ./getBookInfo.js && gulp",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "get-info": "node ./getbookinfo.js"
+    "gulp": "gulp",
+    "get-info": "node ./getBookInfo.js"
   },
   "author": "Carlos Quevedo",
   "license": "ISC",
@@ -16,6 +18,9 @@
     "browserify": "^16.5.0",
     "gulp": "^4.0.2",
     "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
     "node-fetch": "^2.6.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"

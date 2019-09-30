@@ -1,17 +1,17 @@
-  /*By default, JobSity text is not shown in mobile devices */
-@media only screen and (min-width: 768px){
-    .navbar-header #jobsity-text { display: inline;}
-
+/*By default, JobSity text is not shown in mobile devices */
+@media only screen and (min-width: 1190px) {
+  .navbar-header #jobsity-text {
+    display: inline;
   }
+}
 
 @media screen and (max-width: 767px) {
-    .column .cover {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-   }
+  .column .cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
 @media (min-width: 410px) {
   .row .column {
@@ -29,85 +29,180 @@
   }
 }
 @media (min-width: 1020px) {
- .center-content .row .column { 
-  max-width: calc(70% - 10px);
- }
+  .center-content .row .column {
+    max-width: calc(70% - 10px);
+  }
 }
 
+@media screen and (max-width: 1280px) {
+  .sidebar {
+    width: 15%;
+  }
+  .center-content {
+    width: 70%;
+  }
 
-@media screen and (max-width: 1280px){
-    .sidebar {
-       width: 15%; 
-    }
-    .center-content {
-      width: 70%;
-    }
-  }  
-  
-@media screen and (min-width: 1280px){
-    .sidebar {
-       width: 15%; 
-    }
-    
-    .center-content {
-      width: 70%;
-    }
+  .navbar-header .logo-container {
+    width: 15%;
+  }
 
-    .logo-container {
-      width: auto;
-    }
-  }  
+  .navbar-header .search-container {
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .sidebar {
+    width: 15%;
+  }
+
+  .center-content {
+    width: 70%;
+  }
+
+  .navbar-header .logo-container {
+    width: 15%;
+  }
+
+  .logo-container {
+    width: auto;
+  }
+
+  .navbar-header .search-container {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section.right-sidebar {
+    display: none;
+  }
+
+  section.center-content {
+    width: 100%;
+  }
+
+  .left-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: none;
+  }
+  .navbar-header #bookshelf {
+    display: none;
+  }
+
+  .navbar-header .search-container {
+    display: none;
+  }
+
+  .top-container {
+    flex-direction: column;
+    align-items: center;
+    height: 4em;
+    flex-wrap: wrap;
+  }
+
+  .top-container .top-text {
+    justify-content: space-between;
+  }
+
+  .top-container .top-text #title-center {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .top-container .top-text #title-left {
+    display: none;
+  }
+
+  .top-container #title-right {
+    justify-content: space-between;
+    margin-left: 5em;
+  }
+
+  section.center-content {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .left-sidebar .left-items {
+    text-align: center;
+  }
+
+  .cover-info {
+    align-items: stretch;
+    flex-direction: column;
+    max-width: 8em;
+    text-align: left;
+  }
+
+  .sidebar {
+    height: auto;
+    padding: 15px;
+  }
+  .content-container {
+    height: auto;
+  }
+}
 
 @media only screen and (max-width: 768px) {
-    section.right-sidebar {
-      display: none;
-    }
- 
-    section.center-content {
-      width: 100%;
-    } 
+  .navbar-header #vertical-line {
+    height: 0;
+  }
+  .search-container {
+    display: none;
+  }
+  .navbar-header .login a {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .navbar-header .search-container {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .navbar-header .search-container {
+    display: block;
+    width: auto;
+    margin-right: -10em;
   }
 
-  
-@media screen and (max-width: 768px) {
-    .left-sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-    }
-    section.center-content {margin-left: 0; margin-right: 0;}
-    .left-sidebar .left-items {text-align: center;}
-  }
-  
-  
-  /* On small screens, set height to 'auto' for sidebar and grid */
-  @media screen and (max-width: 768px) {
-    .sidebar {
-      height: auto;
-      padding: 15px;
-     
-    }
-    .content-container {height: auto;} 
-
+  .top-text #title-right {
+    margin-left: 14em;
   }
 
-  @media only screen and (max-width: 768px) {
-    .navbar-header #vertical-line {height: 0;}
-    .search-container {display: none;}
-    .navbar-header .login a {display: none;}
-   
+  .top-container .top-text #title-left {
+    display: inline;
   }
 
-  @media only screen and (max-width: 1024px) {
-    .navbar-header .search-container {
-      width: auto;
-    }
+  .top-container .top-text #title-center {
+    margin-left: 10em;
   }
 
-
-  @media screen and (max-width: 650px) {
-    .column {
-      width: 100%;
-      display: block;
-    }
+  .login a {
+    display: none;
   }
+  .navbar-header #bookshelf {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1310px) { 
+
+  .navbar-header #bookshelf {
+    display: none;
+  }
+}
