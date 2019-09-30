@@ -1,0 +1,134 @@
+/*By default, JobSity text is not shown in mobile devices */
+@media only screen and (min-width: 1190px) {
+  .navbar-header #jobsity-text {
+    display: inline; } }
+
+@media screen and (max-width: 767px) {
+  .column .cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center; } }
+
+@media (min-width: 410px) {
+  .row .column {
+    max-width: calc(50% - 10px); } }
+
+@media (min-width: 620px) {
+  .row .column {
+    max-width: calc(33.33333% - 10px); } }
+
+@media (min-width: 830px) {
+  .row .column {
+    max-width: calc(25% - 10px); } }
+
+@media (min-width: 1020px) {
+  .center-content .row .column {
+    max-width: calc(70% - 10px); } }
+
+@media screen and (max-width: 1280px) {
+  .sidebar {
+    width: 15%; }
+  .center-content {
+    width: 70%; }
+  .navbar-header .logo-container {
+    width: 15%; }
+  .navbar-header .search-container {
+    width: auto; } }
+
+@media screen and (min-width: 1280px) {
+  .sidebar {
+    width: 15%; }
+  .center-content {
+    width: 70%; }
+  .navbar-header .logo-container {
+    width: 15%; }
+  .navbar-header .search-container {
+    width: auto; }
+  .logo-container {
+    width: auto; } }
+
+@media screen and (max-width: 768px) {
+  section.right-sidebar {
+    display: none; }
+  section.center-content {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0; }
+  .left-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: none; }
+    .left-sidebar .left-items {
+      text-align: center; }
+  .navbar-header #bookshelf {
+    display: none; }
+  .navbar-header .search-container {
+    display: none; }
+  .top-container {
+    flex-direction: column;
+    align-items: center;
+    height: 4em;
+    flex-wrap: wrap; }
+    .top-container .top-text {
+      justify-content: space-between; }
+      .top-container .top-text #title-center {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: flex-start;
+        margin-left: 0;
+        margin-right: 0; }
+      .top-container .top-text #title-left {
+        display: none; }
+    .top-container #title-right {
+      justify-content: space-between;
+      margin-left: 5em; }
+  .cover-info {
+    align-items: stretch;
+    flex-direction: column;
+    max-width: 8em;
+    text-align: left; }
+  .sidebar {
+    height: auto;
+    padding: 15px; }
+  .content-container {
+    height: auto; } }
+
+@media only screen and (max-width: 768px) {
+  .navbar-header #vertical-line {
+    height: 0; }
+  .navbar-header .login a {
+    display: none; }
+  .search-container {
+    display: none; } }
+
+@media only screen and (max-width: 1024px) {
+  .navbar-header .search-container {
+    width: auto; } }
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block; } }
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .navbar-header .search-container {
+    display: block;
+    width: auto;
+    margin-right: -10em; }
+  .navbar-header #bookshelf {
+    display: none; }
+  .top-text #title-right {
+    margin-left: 14em; }
+  .top-container .top-text #title-left {
+    display: inline; }
+  .top-container .top-text #title-center {
+    margin-left: 10em; }
+  .login a {
+    display: none; } }
+
+@media screen and (min-width: 1025px) and (max-width: 1310px) {
+  .navbar-header #bookshelf {
+    display: none; } }
+
+/*# sourceMappingURL=media-queries.css.map */
