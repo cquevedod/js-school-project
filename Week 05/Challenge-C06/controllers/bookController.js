@@ -1,53 +1,37 @@
 "use strict";
 
-const path = require("path");
-const fs = require("fs");
-
+const msg = require("./statusMsg");
 const Book = require("../models/bookModel");
 
-async function getBook(req, res) {
+ function getBookById(req, res) {
   const bookId = req.params.id;
 
   const query = Book.find({ id: bookId }).exec();
   query
     .then(data => {
       if (!data.length) {
-        res.status(404).send({ message: "Book doesn't exist" });
+        res.status(404).send(msg.notFound("Book doesn't exists"));
         return;
       }
-      const response = {
-        status: 200,
-        items: Book.count({ id: bookId }).exec,
-        books: data
-      };
-      res.send(response);
+      res.send(msg.ok(data));
     })
     .catch(function(err) {
       console.log("error: ", err);
     });
 }
 
-async function getAllBooksOrByBookshelf(req, res) {
+ function getAllBooksOrByBookshelf(req, res) {
   const location = req.params.bookShelf;
   if (location) {
     const QUERY = Book.find({ bookShelf: location }).exec();
     QUERY.then(data => {
       if (!data.length) {
-        res.status(404).send({
-          message: `Invalid BookShelf. Please use one this parameters:
-                                  Cartagena,
-                                  Quito,
-                                  Medellin,
-                                  Digital`
-        });
+        res.status(400).send(msg.badRequest(
+          'Invalid BookShelf. Please use one this parameters: Cartagena, Quito, Medellin or Digital'));
         return;
       }
-      const response = {
-        status: 200,
-        message: "Books by BookShelf",
-        books: data
-      };
-      res.send(response);
+      res.send(msg.ok(data, 'Books by BookShelf!'));
+
     }).catch(function(err) {
       console.log("error: ", err);
     });
@@ -57,15 +41,11 @@ async function getAllBooksOrByBookshelf(req, res) {
       .then(data => {
         if (!data.length) {
           res
-            .status(404)
-            .send({ message: 'Check the route, should be "books/all" ' });
+            .status(204)
+            .send(msg.noContent('No books found in the database'));
         }
-        const response = {
-          status: 200,
-          message: "All Books",
-          books: data
-        };
-        res.send(response);
+        res.send(msg.ok(data, 'All Books!'));
+
       })
       .catch(function(err) {
         console.log("error: ", err);
@@ -73,18 +53,19 @@ async function getAllBooksOrByBookshelf(req, res) {
   }
 }
 
-async function lendBook(req, res) {
+ function lendBook(req, res) {
   const bookId = req.params.id;
   const query = Book.find({ id: bookId }).exec();
-
   query
     .then(data => {
       if (!data.length) {
-        res.status(404).send({ message: "Book doesn't exist" });
+        res.status(404).send(msg.notFound("Book doesn't exists"));
         return;
       }
       console.log(data[0].bookShelf);
       if (data[0].bookShelf == "Digital") {
+        Book.updateOne({ id: bookId }, { $set: { isLent: false } }).exec();
+        console.log("transformed")
         const response = {
           status: 401,
           message: "the book is digital, therefore it can’t be lent",
@@ -101,7 +82,6 @@ async function lendBook(req, res) {
           res.send(response);
         } else {
           console.log(data);
-          // data[0].isLent = true;
           Book.updateOne({ id: bookId }, { $set: { isLent: true } }).exec();
           const response = {
             status: 200,
@@ -117,8 +97,53 @@ async function lendBook(req, res) {
     });
 }
 
+function returnBook(req, res) {
+  const bookId = req.params.id;
+  const query = Book.find({ id: bookId }).exec();
+  query
+    .then(data => {
+      if (!data.length) {
+        res.status(404).send({ message: "Book doesn't exist" });
+        return;
+      }
+      console.log(data[0].bookShelf);
+      if (data[0].bookShelf == "Digital") {
+        const response = {
+          status: 401,
+          message: "the book is digital, so never was lent, therefore you can't return it",
+          bookShelf: data[0].bookShelf
+        };
+        res.send(response);
+      } else {
+        if (data[0].isLent) {
+          Book.updateOne({ id: bookId }, { $set: { isLent: false } }).exec();
+          const response = {
+            status: 200,
+            message: "Book returned!",
+            books: Book.find().exec()
+          };
+          res.send(response);
+
+         
+        } else {
+          console.log(data);
+          const response = {
+            status: 200,
+            message: "Book is not lent, therefore you cant returned!",
+            
+          };
+          res.send(response);
+        }
+      }
+    })
+    .catch(function(err) {
+      console.log("error: ", err);
+    });
+}
+
 module.exports = {
-  getBook,
+  getBookById,
   getAllBooksOrByBookshelf,
-  lendBook
+  lendBook,
+  returnBook
 };
