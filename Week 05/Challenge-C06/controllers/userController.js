@@ -2,6 +2,7 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/userModel");
 const jwt = require("../services/jwt");
+const msg = require("./statusMsg");
 
 function tests(req, res) {
   res.status(200).send({
@@ -9,19 +10,36 @@ function tests(req, res) {
   });
 }
 
-function saveUser(req, res) {
+function validateEmail (emailPassed) {
+  let emailExists = User.find({email: emailPassed }).exec();
+  if (!emailExists) return false;
+  return true;
+}
+
+function register(req, res) {
   let user = new User();
-  //Propiedades params, dentro de cada una estarán las propiedades enviadas por post.
-  //Los siguientes datos llegan por POST
   let params = req.body;
   console.log(params);
   user.name = params.name;
   user.surname = params.surname;
-  user.email = params.email;
+  
+  if (params.email) {
+      if (validateEmail(params.email) == true){
+        let result = msg.notFound("There is a user with this email, please try again");
+        res.status(404).send(result);
+        return; 
+      } else  {
+        user.email = params.email;
+      }
+  } else if (!params.email){
+    res.status(500).send({ message: "Please fill the complete data" });
+    return;
+  }
+  console.log(user.email);
   user.role = "ROLE_USER";
 
+
   if (params.password) {
-    //Encriptar contraseña y guardar datos.
     bcrypt.hash(params.password, 10, function(err, hash) {
       user.password = hash;
       if (user.name && user.surname && user.email) {
@@ -31,7 +49,7 @@ function saveUser(req, res) {
             res.status(500).send({ message: "Error trying to save the user" });
           } else {
             if (!userStored) {
-              res.status(404).send({ message: "User not registered" });
+              res.status(404).send(msg.notFound("User not registered"));
             } else {
               res.status(200).send({ user: userStored });
             }
@@ -56,20 +74,13 @@ function loginUser(req, res) {
       res.status(500).send({ message: "Request Error" });
     } else {
       if (!user) {
-        res.status(404).send({ message: "The user doesnt exists" });
+        res.status(404).send(msg.notFound("The user doesn't exists"));
       } else {
         bcrypt.compare(password, user.password, function(err, check) {
           //Compare pass with pass in db
           if (check) {
             //return user data when is logged in
             if (params.gethash) {
-              // Return a token with JWT, user token.
-              // I should have a service de JWT, return a http response with the token
-              //El token  va a tener todos los datos del usuario codificados. Eso genera un hash
-              //Con el middleware va a decodificar el token en cada una de las peticiones y
-              // comprobar que cada token sea correcto.
-
-              //Ahora se puede utilizar el servicio del TOKEN
               res.status(200).send({
                 token: jwt.createToken(user)
               });
@@ -77,7 +88,7 @@ function loginUser(req, res) {
               res.status(200).send({ user });
             }
           } else {
-            res.status(404).send({ message: "the user cant log in" });
+            res.status(404).send(msg.notFound("There is no user with the data provided"));
           }
         });
       }
@@ -87,6 +98,6 @@ function loginUser(req, res) {
 
 module.exports = {
   tests,
-  saveUser,
+  register,
   loginUser
 };
