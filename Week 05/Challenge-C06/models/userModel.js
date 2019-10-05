@@ -9,7 +9,6 @@ let UserSchema = Schema({
   email: String,
   password: String,
   role: String
-  // book: {type: Schema.ObjectId, ref: 'Book'}
 });
 
 module.exports = mongoose.model("User", UserSchema);
