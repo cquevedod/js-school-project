@@ -26,3 +26,17 @@ email: user2@user.com
 role: ADMIN
 password: 123
 Token hash: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDk3NzU5MjYyZDI2NjMxMTA1MGRhMWEiLCJuYW1lIjoidXNlcjMiLCJzdXJuYW1lIjoidGVzdCIsImVtYWlsIjoidXNlcjNAdXNlci5jb20iLCJpYXQiOjE1NzAyMDcyNTl9.CDoTCVo15UbA7HU0Eo4rItBNuQ8vNePY3rcq7GZ25-A"
+
+Endpoints: 
+
+Not-Secured:
+POST: /api/register
+POST: /api/login
+
+Authenticated with JWT 
+
+GET: /api/book/:id
+GET: /api/books/all
+GET: /api//bookshelf/:bookShelf
+POST: /api/book/:id/lend
+POST: /api/book/:id/return
