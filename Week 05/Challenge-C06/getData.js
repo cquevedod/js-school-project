@@ -1,7 +1,6 @@
 "use strict";
 
 const mongoose = require("mongoose");
-const port = process.env.PORT || 3977;
 const fs = require("fs");
 const Books = require("./models/bookModel");
 
@@ -11,15 +10,15 @@ mongoose
     useUnifiedTopology: true,
     useFindAndModify: false
   })
-  .then(() => console.log("connection succesful!"))
+  .then(() => console.log("☺"))
   .catch(err => console.error("Error trying to connect", err));
 
- function getDataFromJSON() {
+function getDataFromJSON() {
   const books = JSON.parse(fs.readFileSync("./books.json", "utf8"));
   return books;
 }
 
- function populateDB(req, res) {
+function populateDB(req, res) {
   getDataFromJSON().then(data => {
     data.books.forEach(book => {
       const newBook = new Books(book);
