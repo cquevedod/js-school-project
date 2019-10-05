@@ -4,40 +4,32 @@ const User = require("../models/userModel");
 const jwt = require("../services/jwt");
 const msg = require("./statusMsg");
 
-function tests(req, res) {
-  res.status(200).send({
-    message: "Testing controller action of users"
-  });
-}
-
-function validateEmail (emailPassed) {
-  let emailExists = User.find({email: emailPassed }).exec();
-  if (!emailExists) return false;
-  return true;
-}
-
 function register(req, res) {
   let user = new User();
   let params = req.body;
-  console.log(params);
   user.name = params.name;
   user.surname = params.surname;
-  
-  if (params.email) {
-      if (validateEmail(params.email) == true){
-        let result = msg.notFound("There is a user with this email, please try again");
-        res.status(404).send(result);
-        return; 
-      } else  {
-        user.email = params.email;
-      }
-  } else if (!params.email){
-    res.status(500).send({ message: "Please fill the complete data" });
-    return;
-  }
-  console.log(user.email);
   user.role = "ROLE_USER";
 
+  
+  if (params.email) {
+    let query = User.find({ email: params.email }).exec();
+    query.
+      then(data => {
+        if (!data.length) {
+          user.email = params.email;
+      }  else {
+        let result = msg.duplEmail('There is a user with this email, please try again');
+        res.status(401).send(result);
+        return;
+      }
+      })
+      .catch(function(err) {
+        console.log("error: ", err);
+      });
+   
+  } 
+  console.log(user.email);
 
   if (params.password) {
     bcrypt.hash(params.password, 10, function(err, hash) {
@@ -51,16 +43,20 @@ function register(req, res) {
             if (!userStored) {
               res.status(404).send(msg.notFound("User not registered"));
             } else {
-              res.status(200).send({ user: userStored });
+              const response = {
+                status: 200,
+                message: 'Success registering!',
+                user: userStored,
+              };
+              res.status(200).send(response);
             }
           }
         });
-      } else {
-        res.status(500).send({ message: "Please fill the complete data" });
-      }
+      } 
+
     });
   } else {
-    res.status(500).send({ message: "Introduce the password" });
+    res.status(422).send(msg.dataRequired('Introduce the password'));
   }
 }
 
@@ -71,7 +67,7 @@ function loginUser(req, res) {
 
   User.findOne({ email: email.toLowerCase() }, (err, user) => {
     if (err) {
-      res.status(500).send({ message: "Request Error" });
+      res.status(500).send(msg.internalError());
     } else {
       if (!user) {
         res.status(404).send(msg.notFound("The user doesn't exists"));
@@ -97,7 +93,6 @@ function loginUser(req, res) {
 }
 
 module.exports = {
-  tests,
   register,
   loginUser
 };
