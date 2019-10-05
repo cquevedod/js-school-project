@@ -20,7 +20,6 @@
     "mongoose-pagination": "^1.0.0"
   },
   "devDependencies": {
-    "node-fetch": "^2.6.0",
     "nodemon": "^1.19.3"
   }
 }
