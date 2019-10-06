@@ -1,8 +1,6 @@
 
 # Challenge C06 
-
-## Minimum Viable Product (MVP): 
-
+ 
 - Generate a backend rest service with the necessary endpoints to use in the application
 - Integrate MongoDB to save all reservations
 
@@ -67,7 +65,7 @@ Connection to database succesful!
 
 its time to populate the `books` collection! In order to do that we need import the books data from a JSON file named `books.json`:
 
- Open Postman and use the following endpoint: 
+ Open Postman and use the following endpoint in GET mode: 
 
 ```
 http://localhost:3977/api/populateDB
@@ -86,7 +84,7 @@ In the next steps, we'll see how to fill the `users` collection
 Book model schema:
 
 ```JavaScript Code
-   id: String,
+  id: String,
   title: String,
   publishedDate: String,
   author: String,
@@ -126,9 +124,8 @@ POST: /api/login
 
 Authenticated with JWT:
 
+GET: /api/books
 GET: /api/book/:id
-GET: /api/books/all
-GET: /api//bookshelf/:bookShelf
 POST: /api/book/:id/lend
 POST: /api/book/:id/return
 ```
@@ -140,7 +137,7 @@ In order to use the authenticated endpoints we need to create an user, to do thi
 
 #### Remember send the data using x-www-form-urlencoded in the Body tab: 
 
-The body of this request consist in the following `propertie : value` pairs: 
+The body of this request consist in the following `key : value` pairs: 
 
 ```JSON
 "name": String
@@ -176,7 +173,7 @@ Its time to Login to get the authorization token.
 
 To Login you can use the `/api/login` endpoint
 
-The body of this request consist in the following `propertie : value` pairs: 
+The body of this request consist in the following `key : value` pairs: 
 
 ```JSON
 "email": String
@@ -193,6 +190,52 @@ If everything is ok the server will give you a response as like the following on
 }
 ```
 ### Step 8: Using secured endpoints
+
+In order to use the secured endpoints, you must copy the token and paste it in the 'Headers' tab of Postman. 
+
+Name the key field as  'Authorization' and then paste the token in the 'value' field. Once done, you can make the request. 
+
+The following `key : value` pair must be in the request header: 
+
+```JSON 
+"Authorization": "YOUR_TOKEN",
+```
+
+#### if you try to make the request without the token, you will receive the following response: 
+
+```JSON
+{
+    "status": 401,
+    "description": "Unauthorized",
+    "message": "You need authorization to do this action. Please login and get the Token"
+}
+```
+
+If everything is ok, you will get the normal response of the server according to the endpoint used. 
+
+## Book endpoints
+
+* ###  `/api/books`
+
+#### Request type: GET
+
+This endpoint without `bookshelf` query parameter return all books stored in database. 
+
+If everything is ok the server will give you the following response: 
+
+
+ ```JSON
+{
+    "status": 200,
+    "description": "OK",
+    "message": "All Books!",
+    "items": 16,
+    "books": [
+        {
+     .
+     .
+     .
+ ```
 
 
 
