@@ -29,12 +29,11 @@ function register(req, res) {
       });
    
   } 
-  console.log(user.email);
 
-  if (params.password) {
+  if (params.password && params.name && params.email) {
     bcrypt.hash(params.password, 10, function(err, hash) {
       user.password = hash;
-      if (user.name && user.surname && user.email) {
+  
         // Save user
         user.save((err, userStored) => {
           if (err) {
@@ -52,11 +51,10 @@ function register(req, res) {
             }
           }
         });
-      } 
-
+       
     });
   } else {
-    res.status(422).send(msg.dataRequired('Introduce the password'));
+    res.status(422).send(msg.dataRequired('Please complete the data needed'));
   }
 }
 
@@ -65,6 +63,7 @@ function loginUser(req, res) {
   let email = params.email;
   let password = params.password;
 
+ if (email && password) { 
   User.findOne({ email: email.toLowerCase() }, (err, user) => {
     if (err) {
       res.status(500).send(msg.internalError());
@@ -76,22 +75,27 @@ function loginUser(req, res) {
           //Compare pass with pass in db
           if (check) {
             //return user data when is logged in
-            if (params.gethash) {
+            // if (params.gethash) {
               res.status(200).send({
+                email : email,
                 token: jwt.createToken(user)
               });
-            } else {
-              res.status(200).send({ user });
-            }
+            // } else {
+            //   res.status(200).send({ user });
+            // }
           } else {
-            res.status(404).send(msg.notFound("There is no user with the data provided"));
+            res.status(404).send(msg.notFound("Wrong data"));
           }
         });
       }
     }
   });
+ } else { 
+   res.status(422).send(msg.dataRequired('Please complete the data'));
+   return;
+ }
 }
-
+ 
 module.exports = {
   register,
   loginUser
