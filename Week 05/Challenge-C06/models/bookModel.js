@@ -13,6 +13,7 @@ let BookSchema = Schema({
   rating: Number,
   bookShelf: String,
   isLent: Boolean,
+  returnDate: String,
   isbn: String
 });
 
