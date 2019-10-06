@@ -1,34 +1,66 @@
-First example user: 
 
-name: user1
-surname: test
-email: user1@user.com
-password: 1234
+# Challenge C06 
 
-Token once logged in: 
-"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDk1NzhlZTI3YTQ4MTM1MTAyNjc3MGQiLCJuYW1lIjoidXNlcjEiLCJzdXJuYW1lIjoidGVzdCIsImVtYWlsIjoidXNlcjFAdXNlci5jb20iLCJpYXQiOjE1NzAwNzkwNzJ9.RVjElWhITM5Coh56BW1OUqJQI8Ejex45X7NMMzGoKfc"
+## Minimum Viable Product (MVP): 
 
-Second Example User: 
+- Generate a backend rest service with the necessary endpoints to use in the application
+- Integrate MongoDB to save all reservations
 
-name: user2
-surname: test
-email: user2@user.com
-password: hola
-Token_hash: 
-"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDk2NmMyNGFhNGEzZjJlMGMwMjNmZmQiLCJuYW1lIjoidXNlcjIiLCJzdXJuYW1lIjoidGVzdCIsImVtYWlsIjoidXNlcjJAdXNlci5jb20iLCJpYXQiOjE1NzAxNDEyNDJ9.VaMnaUdahcTMF9R_aiSVgXS4z47DHpOH2cijabJT4Fo"
+  Detailed specs:
+- - Create some JS code to populate MongoDB with books information.
+- - Create a method to return all books. This method could receive a QUERY parameter to filter the books by               bookShelf: Quito, Medellin, Digital, etc….
+- - Create a method to return the info of 1 book.
+- - Create a method to lend a Book. This method should validate the book is not lent.
+- - The backend should Have users.
+- - Create a login endpoint for a user to authenticate and receive a token
+- - All the endpoints except Login are secured. Use a JWT approach
+- - Create a Detailed Readme on how to run the backend
 
-NOTA: Agrega propiedad 'rol' a los users.
+- Create at least 3 endpoints to be consumed
+- Use express architecture to mount all services
 
-Third example user: 
-name: user2
-surname: test
-email: user2@user.com
-role: ADMIN
-password: 123
-Token hash: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDk3NzU5MjYyZDI2NjMxMTA1MGRhMWEiLCJuYW1lIjoidXNlcjMiLCJzdXJuYW1lIjoidGVzdCIsImVtYWlsIjoidXNlcjNAdXNlci5jb20iLCJpYXQiOjE1NzAyMDcyNTl9.CDoTCVo15UbA7HU0Eo4rItBNuQ8vNePY3rcq7GZ25-A"
+## Development
+
+### Step 1 Create database and collections 
+
+After run MongoDB services, let's create `bookInfo` database. In Mongo terminal: 
+
+> > use bookInfo
+
+Now let's create the collections into `bookInfo`
+
+`books` collection:
+ ```
+ db.createCollection('books')
+```
+`users` colection:
+```
+db.createCollection('users')
+```
+its time to populate the `books` collection! In order to do that we need import the books data from a JSON file named `books.json`:
+
+ Open Postman and use the following endpoint: 
+
+```
+/api/populateDB
+```
+The result should be a `db populated` message and we have the books collection filled with books data. 
+
+In the step four, we'll see how to fill the `users` collection
+
+### Step 2 Installing Dependencies 
+
+It's neccesary to have all dependencies, listed in `package.json`, installed in order to run the project properly.
+
+> $ npm install
+
+Once all dependencies are installed, run the following command to start the application
+
+> $ npm run start
 
 Endpoints: 
 
+```
 Not-Secured:
 POST: /api/register
 POST: /api/login
@@ -40,3 +72,4 @@ GET: /api/books/all
 GET: /api//bookshelf/:bookShelf
 POST: /api/book/:id/lend
 POST: /api/book/:id/return
+```
