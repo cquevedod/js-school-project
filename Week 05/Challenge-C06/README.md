@@ -82,7 +82,6 @@ In the next steps, we'll see how to fill the `users` collection
 #### Models
 
 Book model schema:
-
 ```JavaScript Code
   id: String,
   title: String,
@@ -93,6 +92,7 @@ Book model schema:
   rating: Number,
   bookShelf: String,
   isLent: Boolean,
+  returnDate: String,
   isbn: String
 ```
 
@@ -272,7 +272,7 @@ For example, filter the books by Digital bookShelf:
     ]
 }
 ```
-* ###  `/api/book/:id`
+* ###  `/api/books/:id`
 
 #### Method type: GET
 
