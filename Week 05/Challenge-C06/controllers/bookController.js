@@ -9,9 +9,8 @@ function getBookById(req, res) {
   const query = Book.find({ id: bookId }).exec();
   query
     .then(data => {
-      console.log("id book: " + data.id);
       if (!data.length) {
-        res.status(404).send(msg.notFound("Book doesn't exists"));
+        res.status(404).send(msg.notFound("Book doesn't exist"));
         return;
       }
       res.send(msg.ok(data));
@@ -22,8 +21,9 @@ function getBookById(req, res) {
 }
 
 function getAllBooksOrByBookshelf(req, res) {
-  const location = req.params.bookShelf;
-  if (location) {
+  const input = req.query.bookshelf;
+  if (input) {
+    let location = input[0].toUpperCase() + input.slice(1);
     const QUERY = Book.find({ bookShelf: location }).exec();
     QUERY.then(data => {
       if (!data.length) {
@@ -31,12 +31,12 @@ function getAllBooksOrByBookshelf(req, res) {
           .status(400)
           .send(
             msg.badRequest(
-              "Invalid BookShelf. Please use one this parameters: Cartagena, Quito, Medellin or Digital"
+              "Invalid BookShelf! Valid bookshelves: Cartagena, Quito, Medellin or Digital"
             )
           );
         return;
       }
-      res.send(msg.ok(data, "Books by BookShelf!"));
+      res.send(msg.ok(data, `${location} books`));
     }).catch(function(err) {
       console.log("error: ", err);
     });
@@ -55,24 +55,23 @@ function getAllBooksOrByBookshelf(req, res) {
   }
 }
 
-function lendBook(req, res) {
+ function lendBook(req, res) {
   const bookId = req.params.id;
+  const body = req.body;
   const query = Book.find({ id: bookId }).exec();
   query
     .then(data => {
       if (!data.length) {
-        res.status(404).send(msg.notFound("Item doesn't exists"));
+        res.status(404).send(msg.notFound("Item doesn't exist"));
         return;
       }
-      console.log(data[0].bookShelf);
       if (data[0].bookShelf == "Digital") {
         Book.updateOne({ id: bookId }, { $set: { isLent: false } }).exec();
-        console.log("transformed");
         res
           .status(401)
           .send(
             msg.unAuthorized(
-              "Is a digital book, therefore it can’t be lent",
+              "You can't lend a Digital book!",
               data
             )
           );
@@ -82,50 +81,13 @@ function lendBook(req, res) {
             .status(401)
             .send(msg.alreadyLentOrNot(data, "This book is already Lent!"));
         } else {
-          console.log(data);
-          Book.updateOne({ id: bookId }, { $set: { isLent: true } }).exec();
-          res.status(200).send(msg.okIsLentOrReturned(data, "Book lent!"));
-        }
-      }
-    })
-    .catch(function(err) {
-      console.log("error: ", err);
-    });
-}
-
-function returnBook(req, res) {
-  const bookId = req.params.id;
-  const query = Book.find({ id: bookId }).exec();
-  query
-    .then(data => {
-      if (!data.length) {
-        res.status(404).send(msg.notFound("Book doesn't exists"));
-        return;
-      }
-      console.log(data[0].bookShelf);
-      if (data[0].bookShelf == "Digital") {
-        res
-          .status(401)
-          .send(
-            msg.unAuthorized(
-              "the book is digital, so never was lent, therefore you can't return it",
-              data
-            )
-          );
-      } else {
-        if (data[0].isLent) {
-          Book.updateOne({ id: bookId }, { $set: { isLent: false } }).exec();
-          res.status(200).send(msg.okIsLentOrReturned(data, "Book returned!"));
-        } else {
-          console.log(data);
-          res
-            .status(401)
-            .send(
-              msg.alreadyLentOrNot(
-                data,
-                "Book is not lent, therefore you can't returned!"
-              )
-            );
+          if(body.return_date) {
+            Book.updateOne({ id: bookId }, { $set: { isLent: true,
+                                                    returnDate: body.return_date}, }).exec();
+            res.status(200).send(msg.lentTheBook(data, "Book lent!", body.return_date));
+          } else {
+            res.status(400).send(msg.invalidLentDate());
+          }
         }
       }
     })
@@ -138,5 +100,4 @@ module.exports = {
   getBookById,
   getAllBooksOrByBookshelf,
   lendBook,
-  returnBook
 };
