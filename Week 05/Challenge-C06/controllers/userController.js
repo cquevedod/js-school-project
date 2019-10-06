@@ -19,7 +19,7 @@ function register(req, res) {
         if (!data.length) {
           user.email = params.email;
       }  else {
-        let result = msg.duplEmail('There is a user with this email, please try again');
+        let result = msg.duplEmail('There is a user with this email!');
         res.status(401).send(result);
         return;
       }
@@ -34,7 +34,6 @@ function register(req, res) {
     bcrypt.hash(params.password, 10, function(err, hash) {
       user.password = hash;
   
-        // Save user
         user.save((err, userStored) => {
           if (err) {
             res.status(500).send({ message: "Error trying to save the user" });
@@ -54,7 +53,7 @@ function register(req, res) {
        
     });
   } else {
-    res.status(422).send(msg.dataRequired('Please complete the data needed'));
+    res.status(422).send(msg.dataRequired('Please complete the required data'));
   }
 }
 
@@ -69,20 +68,14 @@ function loginUser(req, res) {
       res.status(500).send(msg.internalError());
     } else {
       if (!user) {
-        res.status(404).send(msg.notFound("The user doesn't exists"));
+        res.status(404).send(msg.notFound("The user doesn't exist"));
       } else {
         bcrypt.compare(password, user.password, function(err, check) {
-          //Compare pass with pass in db
           if (check) {
-            //return user data when is logged in
-            // if (params.gethash) {
               res.status(200).send({
                 email : email,
                 token: jwt.createToken(user)
               });
-            // } else {
-            //   res.status(200).send({ user });
-            // }
           } else {
             res.status(404).send(msg.notFound("Wrong data"));
           }
