@@ -13,14 +13,15 @@ mongoose
   .then(() => console.log("☺"))
   .catch(err => console.error("Error trying to connect", err));
 
-function getDataFromJSON() {
-  const books = JSON.parse(fs.readFileSync("./books.json", "utf8"));
+async function getDataFromJSON() {
+  const books = await JSON.parse(fs.readFileSync("./books.json", "utf8"));
   return books;
 }
 
 function populateDB(req, res) {
-  getDataFromJSON().then(data => {
-    data.books.forEach(book => {
+  getDataFromJSON()
+    .then(data => {
+     data.books.forEach(book => {
       const newBook = new Books(book);
       newBook.save();
     });
