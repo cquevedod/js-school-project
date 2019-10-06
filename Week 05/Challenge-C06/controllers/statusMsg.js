@@ -10,17 +10,26 @@ function ok (data, msg) {
 };
 
 
-function okIsLentOrReturned (data, msg) {
+function lentTheBook (data, msg, rDate) {
     const response = {
         status: 200,
         description: 'OK',
         message: msg,
         items: data.length,
-        isLentOldValue: data[0].isLent,
-        book: data
+        return_date: rDate,
       }
       return response;
 };
+
+function invalidLentDate () {
+    const response = {
+        status: 400,
+        description: 'Bad request',
+        message: 'Please enter a valid body key',
+        valid_key: 'return_date',
+    }
+    return response;
+}
 
 function alreadyLentOrNot (data, msg) {
     const response = {
@@ -104,7 +113,8 @@ function duplEmail (msg) {
 module.exports = {
     ok,
     alreadyLentOrNot,
-    okIsLentOrReturned,
+    lentTheBook,
+    invalidLentDate,
     noContent,
     badRequest,
     unAuthorized,
