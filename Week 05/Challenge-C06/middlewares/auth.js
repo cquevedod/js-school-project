@@ -21,7 +21,6 @@ exports.ensureAuth = function(req, res, next) {
   try {
     var payload = jwt.decode(token, secret); //use var here because of hoisting. if use let, the payload in the line 39 will be undefined
 
-    console.log(payload);
 
     if (payload.exp <= moment().unix()) {
       return res.status(401).send({ message: 'Token has expired' });
@@ -30,9 +29,6 @@ exports.ensureAuth = function(req, res, next) {
     console.log(ex);
     return res.status(401).send(msg.unAuthorized('Invalid authentication Token'));
   }
-  console.log("Now...");
-  // console.log(payload);
-
   req.user = payload;
   next();
 };
