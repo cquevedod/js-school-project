@@ -19,8 +19,8 @@
 
 ## Requeriments:
 
-* Node.js
-* MongoDB Server
+* Node.js version 10.16.0
+* MongoDB Server version 4.2
 
 ## How to run the app
 
@@ -125,9 +125,8 @@ POST: /api/login
 Authenticated with JWT:
 
 GET: /api/books
-GET: /api/book/:id
-POST: /api/book/:id/lend
-POST: /api/book/:id/return
+GET: /api/books/:id
+POST: /api/books/:id/lend
 ```
 
 ### Step 6: Registering a user
@@ -217,7 +216,7 @@ If everything is ok, you will get the normal response of the server according to
 
 * ###  `/api/books`
 
-#### Request type: GET
+#### Method type: GET
 
 This endpoint without `bookshelf` query parameter return all books stored in database. 
 
@@ -232,10 +231,113 @@ If everything is ok the server will give you the following response:
     "items": 16,
     "books": [
         {
-     .
-     .
-     .
+          ...
+        },
+        ...
+    ]
+}
  ```
+This method could receive a QUERY parameter named `bookshelf` to filter the books by bookshelf. 
+
+If you enter an invalid location, the server will give you the following response: 
+
+ ```JSON
+{
+    "status": 400,
+    "description": "Bad Request",
+    "message": "Invalid BookShelf! Valid bookshelves: Cartagena, Quito, Medellin or Digital"
+}
+```
+If everything is ok the server will give you a response as like the following one:
+
+For example, filter the books by Digital bookShelf:
+
+```JSON
+{
+    "status": 200,
+    "description": "OK",
+    "message": "Digital books",
+    "items": 5,
+    "books": [
+        {
+           "_id": "5d9a071e267a582bcc114adc",
+            "id": "2",
+            "title": "The Secret Country",
+            "publishedDate": "2007",
+            "author": "Jane Johnson",
+            "pageCount": 336,
+            ...
+        },
+        ...
+    ]
+}
+```
+* ###  `/api/book/:id`
+
+#### Method type: GET
+
+This endpoint return the info of 1 book by `id` (id located in the JSON file).
+
+If you enter a `id` that doesn't exist, the server will give you the following response: 
+
+```JSON
+{
+    "status": 404,
+    "description": "Not Found",
+    "message": "Book doesn't exist"
+}
+```
+If everyting is OK, the server will give you a response with the info of one book. 
 
 
+* ###  `/api/books/:id/lend`
 
+#### Method type: POST
+
+This endpoint allow you lend a book.
+
+Open Postman, put your token in the Headers Tab. Then go  to 'Body' tab and check "x-www-form-urlencoded"
+
+Your POST header should looks like as: 
+
+POST requests header: 
+```JSON
+"Content-Type": "application/x-www-form-urlencoded",
+"Authorization": "YOUR_TOKEN"
+```
+The body of this request consist in the following `key : value` pairs: 
+
+```JSON
+"return_date": Date
+```
+This `Date` format is DD/MM/YYYY.
+
+For example, your POST Body header should looks like as: 
+
+```JSON
+"return_date": 06/10/2019
+```
+If you put a wrong key name or not chekc the `return_date` key, the server will give you the following response: 
+
+```JSON
+{
+    "status": 400,
+    "description": "Bad request",
+    "message": "Please enter a valid body key",
+    "valid_key": "return_date"
+}
+```
+
+If everyting is OK, the server will give you the following response: 
+
+```JSON
+{
+    "status": 200,
+    "description": "OK",
+    "message": "Book lent!",
+    "items": 1,
+    "return_date": "06-10-2019"
+}
+```
+
+And that's it!
