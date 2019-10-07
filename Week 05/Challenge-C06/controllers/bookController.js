@@ -3,21 +3,19 @@
 const msg = require("./statusMsg");
 const Book = require("../models/bookModel");
 
-function getBookById(req, res) {
-  const bookId = req.params.id;
-  const query = Book.find({ id: bookId }).exec();
-  query.then(data => {
-      if (!data.length) {
-        res
-          .status(404)
-          .send(msg.notFound("Book doesn't exist"));
-        return;
-      }
-      res.send(msg.ok(data));
-    })
-    .catch(function(err) {
-      console.log("error: ", err);
-    });
+async function getBookById(req, res) {
+  try {
+    const bookId = req.params.id;
+    const query = await Book.find({ id: bookId }).exec();
+    if (!query.length) {
+      return res
+        .status(404)
+        .send(msg.notFound("Book doesn't exist"));
+    }
+    return res.send(msg.ok(query));
+  } catch (err) {
+    console.log("error: ", err);
+  }
 }
 
 function getAllBooksOrByBookshelf(req, res) {
@@ -68,7 +66,7 @@ function lendBook(req, res) {
         Book.updateOne({ id: bookId },
           { $set: { isLent: false }})
           .exec();
-        res
+        return res
           .status(401)
           .send(msg.unAuthorized("You can't lend a Digital book!", book));
       } else {
