@@ -60,31 +60,31 @@ function getAllBooksOrByBookshelf(req, res) {
   const body = req.body;
   const query = Book.find({ id: bookId }).exec();
   query
-    .then(data => {
-      if (!data.length) {
+    .then(book => {
+      if (!book.length) {
         res.status(404).send(msg.notFound("Item doesn't exist"));
         return;
       }
-      if (data[0].bookShelf == "Digital") {
+      if (book[0].bookShelf == "Digital") {
         Book.updateOne({ id: bookId }, { $set: { isLent: false } }).exec();
         res
           .status(401)
           .send(
             msg.unAuthorized(
               "You can't lend a Digital book!",
-              data
+              book
             )
           );
       } else {
-        if (data[0].isLent) {
+        if (book[0].isLent) {
           res
             .status(401)
-            .send(msg.alreadyLentOrNot(data, "This book is already Lent!"));
+            .send(msg.alreadyLentOrNot(book, "This book is already Lent!"));
         } else {
           if(body.return_date) {
             Book.updateOne({ id: bookId }, { $set: { isLent: true,
                                                     returnDate: body.return_date}, }).exec();
-            res.status(200).send(msg.lentTheBook(data, "Book lent!", body.return_date));
+            res.status(200).send(msg.lentTheBook(book, "Book lent!", body.return_date));
           } else {
             res.status(400).send(msg.invalidLentDate());
           }
