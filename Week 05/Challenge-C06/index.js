@@ -1,5 +1,6 @@
 'use strict'
 
+require('dotenv').config();
 const mongoose = require('mongoose');
 const app = require('./app');
 const port = process.env.PORT || 3977;
@@ -15,5 +16,6 @@ mongoose.connect('mongodb://localhost:27017/bookInfo',{
 app.listen(port, function() {
   console.log(`Server listening at http://localhost:${port}`);
 });
+
 
   

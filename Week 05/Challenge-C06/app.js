@@ -2,14 +2,14 @@
 
 const express = require('express');
 const bodyparser = require('body-parser');
-var cors = require('cors');
+const cors = require('cors');
 
-let app = express();
+const app = express();
 const data = require('./getData');
 
 /*load paths*/
 const user_routes = require('./routes/userRoute');
-const book_routes = require('./routes/bookRoute')
+const book_routes = require('./routes/bookRoute');
 
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
@@ -20,10 +20,10 @@ app.use('/api', user_routes);
 app.use('/api', book_routes); 
 
 app.get('/test', (req, res) => {
-    res.status(200).send({message: 'Test succesful'})
+  res.status(200).send({message: 'Test succesful'})
 });
 
-app.get(`/api/populateDB`, (req, res) => {
+app.get('/api/populateDB', (req, res) => {
   data.populateDB(req, res);
 });
 
