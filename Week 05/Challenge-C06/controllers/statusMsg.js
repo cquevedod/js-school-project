@@ -9,13 +9,13 @@ function ok (data, msg) {
       return response;
 };
 
-
-function lentTheBook (data, msg, rDate) {
+function lentTheBook (book, msg, rDate) {
     const response = {
         status: 200,
         description: 'OK',
         message: msg,
-        items: data.length,
+        items: book.length,
+        bookID: book[0].id,
         return_date: rDate,
       }
       return response;
@@ -31,14 +31,14 @@ function invalidLentDate () {
     return response;
 }
 
-function alreadyLentOrNot (data, msg) {
+function alreadyLentOrNot (book, msg) {
     const response = {
         status: 401,
         description: 'Unauthorized',
         message: msg,
-        items: data.length,
-        isLent: data[0].isLent,
-        book: data
+        items: book.length,
+        isLent: book[0].isLent,
+        book: book
       }
       return response;
 };
@@ -63,7 +63,7 @@ function badRequest (msg) {
     return response;
 };
 
-function unAuthorized (msg, data) {
+function unAuthorized (msg) {
     const response = {
         status: 401,
         description: 'Unauthorized',
