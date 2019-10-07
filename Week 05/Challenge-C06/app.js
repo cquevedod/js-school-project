@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyparser = require('body-parser');
+var cors = require('cors');
 
 let app = express();
 const data = require('./getData');
@@ -12,6 +13,8 @@ const book_routes = require('./routes/bookRoute')
 
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
+
+app.use(cors());
 
 app.use('/api', user_routes); 
 app.use('/api', book_routes); 
