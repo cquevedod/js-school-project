@@ -239,6 +239,8 @@ If everything is ok the server will give you the following response:
  ```
 This method could receive a QUERY parameter named `bookshelf` to filter the books by bookshelf. 
 
+You need to add key `bookshelf` in Params tab and then put the `value`: Cartagena, Medellin, Quito or Digital.
+
 If you enter an invalid location, the server will give you the following response: 
 
  ```JSON
@@ -315,7 +317,7 @@ This `Date` format is DD/MM/YYYY.
 For example, your POST Body header should looks like as: 
 
 ```JSON
-"return_date": 06/10/2019
+"return_date": 07/10/2019
 ```
 If you put a wrong key name or not chekc the `return_date` key, the server will give you the following response: 
 
@@ -336,7 +338,7 @@ If everyting is OK, the server will give you the following response:
     "description": "OK",
     "message": "Book lent!",
     "items": 1,
-    "return_date": "06-10-2019"
+    "return_date": "06/10/2019"
 }
 ```
 
