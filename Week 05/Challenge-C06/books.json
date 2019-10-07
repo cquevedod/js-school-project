@@ -47,7 +47,7 @@
       "description": "Professor Denison and Bix, his dinosaur companion, are summoned to the forbidden empire of Chandara but, having lost their invitation, must travel penniless and in disguise through spectacular sights and memorable scenes. Includes a new afterword by the author.",
       "rating": 0,
       "bookShelf": "Medellin",
-      "isLent": true,
+      "isLent": false,
       "returnDate": "DD/MM/YYYY",
       "isbn": "9781606601006"
     },
@@ -111,7 +111,7 @@
       "description": "\"Toronia, a kingdom composed of three realms, is wracked with civil war. King Brutan rules with an iron fist. The kingdom's only hope comes in the form of Brutan's illegitimate triplets, prophesied to kill the king and rule together in peace. Separated at birth and scattered throughout the realms, the triplets face a desperate fight to secure their destiny\"--",
       "rating": 3,
       "bookShelf": "Cartagena",
-      "isLent": true,
+      "isLent": false,
       "returnDate": "DD/MM/YYYY",
       "isbn": "9781481424431"
     },
@@ -162,7 +162,7 @@
       "rating": 0,
       "bookShelf": "Medellin",
       "isLent": true,
-      "returnDate": "DD/MM/YYYY",
+      "returnDate": "13/10/2019",
       "isbn": "9782841371600"
     },
     {
@@ -200,7 +200,7 @@
       "rating": 3,
       "bookShelf": "Quito",
       "isLent": true,
-      "returnDate": "DD/MM/YYYY",
+      "returnDate": "11/10/2019",
       "isbn": "9781554537778"
     }
   ]
