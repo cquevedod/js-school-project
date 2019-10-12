@@ -1,0 +1,442 @@
+* {
+    box-sizing: border-box;
+  }
+
+.content-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+  }
+  
+  .sidebar {
+    background-color: #231f20;
+  }
+  
+  .sidebar .left-items p {
+    padding: 0 12.5%;
+    margin-top: 2em;
+  }
+  
+  .left-items .title {
+    color: #fff;
+    font-family: PlutoSansCondBold;
+    font-size: 1em;
+    text-transform: uppercase;
+  }
+  
+  .left-items {
+    color: #fff;
+    font-family: PlutoSansCondRegular;
+    font-size: 12px;
+    text-transform: capitalize;
+    margin-top: 2.7em;
+  }
+  
+  .left-items a {
+    text-decoration: none;
+    color: #6ec1e4;
+  }
+  
+  .left-items a:hover {
+    text-decoration: underline;
+  }
+  
+  .left-items p {
+    font-size: 0.9em;
+  }
+  
+  .left-items i {
+    margin-right: 1.5em;
+    margin-left: 0.2em;
+  }
+  
+  .left-items #white {
+    color: #fff;
+    margin-bottom: 4.5em;
+  }
+  
+  .top-container {
+    color: #2c2829;
+    overflow: auto;
+  }
+  
+  .top-container .top-text {
+    padding: 1.2% 6.5% 1.2% 7.9%;
+  }
+  
+  .top-container .top-text p {
+    display: inline-block;
+  }
+  
+  .top-container .top-text #title-left {
+    color: #231f20;
+    font-family: PlutoSansCondLight;
+    margin-right: -1em;
+  }
+  
+  .top-container .top-text #title-center {
+    color: #979797;
+    font-family: PlutoSansCondMedium;
+    font-size: 0.8em;
+    margin-left: 17em;
+    margin-right: 20.5em;
+  }
+  
+  .top-container .top-text #title-center #text-one {
+    font-family: PlutoSansCondMedium;
+    margin-right: 1em;
+    border-right: 1px solid rgba(151, 151, 151, 0.786628);
+    padding-right: 0.7em;
+  }
+  
+  .top-container .top-text #title-center #text-two {
+    color: #858585;
+    font-family: PlutoSansCondRegular;
+  }
+  
+  .top-container .top-text #title-right {
+    color: #6ec1e4;
+  }
+  
+  .center-content .row {
+    width: 86.4%;
+    margin: 0 6% 0 7.6%;
+    margin-bottom: 1.5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .column {
+    width: 20%;
+    margin-bottom: 2%;
+  }
+  
+  .cover-info {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    margin-top: 0.3em;
+    margin-bottom: 0.9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .cover-info::after,
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .cover .cover-info p {
+    text-transform: capitalize;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .cover .cover-info .book-title {
+    font-family: PlutoSansCondMedium;
+    font-size: 0.9375em;
+    color: #383838;
+    margin-top: 0.5em;
+    width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+  }
+  
+  .cover-info .book-author {
+    padding-right: 2em;
+    font-family: PlutoSansCondLight;
+    color: #9e9e9e;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 1.8em;
+    line-height: 1.8em;
+  }
+  
+  .star-rating {
+    color: #6ec1e4;
+    font-family: Free-Regular-400;
+    font-size: 0.8em;
+  }
+  
+  .star-rating {
+    cursor: pointer;
+  }
+  
+  .checked {
+    color: #6ec1e4;
+  }
+  
+  .cover img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .container::after,
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .title {
+    color: grey;
+  }
+  
+  .button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .button:hover {
+    background-color: #555;
+  }
+  
+  .right-sidebar {
+    color: #bab6b3;
+  }
+  
+  .right-sidebar .content-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: space-around;
+    align-items: center;
+    margin-top: 1em;
+    margin-right: 1em;
+  }
+  
+  .content-list .title-list {
+    color: #fcf8f3;
+    font-family: PlutoSansCondBold;
+    font-size: 13px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  
+  .content-list li {
+    color: #fcf8f3;
+    font-family: PlutoSansCondLight;
+    font-size: 10px;
+    margin-bottom: 2em;
+    opacity: 0.7;
+  }
+  
+  .left-sidebar,
+  .center-content,
+  .right-sidebar {
+    height: 100vh;
+  }
+  
+  .center-content {
+    background-color: #f5f6f8;
+    overflow-y: scroll;
+  }
+  
+  /*By default, JobSity text is not shown in mobile devices */
+@media only screen and (min-width: 1190px) {
+    .navbar-header #jobsity-text {
+      display: inline;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .column .cover {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  @media (min-width: 410px) {
+    .row .column {
+      max-width: calc(50% - 10px);
+    }
+  }
+  @media (min-width: 620px) {
+    .row .column {
+      max-width: calc(33.33333% - 10px);
+    }
+  }
+  @media (min-width: 830px) {
+    .row .column {
+      max-width: calc(25% - 10px);
+    }
+  }
+  @media (min-width: 1020px) {
+    .center-content .row .column {
+      max-width: calc(70% - 10px);
+    }
+  }
+  
+  @media screen and (max-width: 1280px) {
+    .sidebar {
+      width: 15%;
+    }
+    .center-content {
+      width: 70%;
+    }
+  
+    .navbar-header .logo-container {
+      width: 15%;
+    }
+  
+  }
+  
+  @media screen and (min-width: 1280px) {
+    .sidebar {
+      width: 15%;
+    }
+  
+    .center-content {
+      width: 70%;
+    }
+  
+    .navbar-header .logo-container {
+      width: 15%;
+    }
+  
+    .logo-container {
+      width: auto;
+    }
+  
+  }
+  
+  @media screen and (max-width: 768px) {
+    section.right-sidebar {
+      display: none;
+    }
+  
+    section.center-content {
+      width: 100%;
+    }
+  
+    .left-sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      display: none;
+    }
+    .navbar-header #bookshelf {
+      display: none;
+    }
+  
+  
+  
+    .top-container {
+      flex-direction: column;
+      align-items: center;
+      height: 4em;
+      flex-wrap: wrap;
+    }
+  
+    .top-container .top-text {
+      justify-content: space-between;
+    }
+  
+    .top-container .top-text #title-center {
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: flex-start;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  
+    .top-container .top-text #title-left {
+      display: none;
+    }
+  
+    .top-container #title-right {
+      justify-content: space-between;
+      margin-left: 5em;
+    }
+  
+    section.center-content {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .left-sidebar .left-items {
+      text-align: center;
+    }
+  
+    .cover-info {
+      align-items: stretch;
+      flex-direction: column;
+      max-width: 8em;
+      text-align: left;
+    }
+  
+    .sidebar {
+      height: auto;
+      padding: 15px;
+    }
+    .content-container {
+      height: auto;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .navbar-header #vertical-line {
+      height: 0;
+    }
+ 
+    .navbar-header .login a {
+      display: none;
+    }
+  }
+  
+ 
+  
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .navbar-header .search-container {
+      display: block;
+      width: auto;
+      margin-right: -10em;
+    }
+  
+    .top-text #title-right {
+      margin-left: 14em;
+    }
+  
+    .top-container .top-text #title-left {
+      display: inline;
+    }
+  
+    .top-container .top-text #title-center {
+      margin-left: 10em;
+    }
+  
+    .login a {
+      display: none;
+    }
+    .navbar-header #bookshelf {
+      display: none;
+    }
+  }
+  
+  @media screen and (min-width: 1025px) and (max-width: 1310px) { 
+  
+    .navbar-header #bookshelf {
+      display: none;
+    }
+  }
