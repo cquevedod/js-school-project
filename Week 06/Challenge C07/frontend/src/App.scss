@@ -1,0 +1,337 @@
+$color_1: #fff;
+$color_2: #6ec1e4;
+$color_3: #2c2829;
+$color_4: #231f20;
+$color_5: #979797;
+$color_6: #858585;
+$color_7: #383838;
+$color_8: #9e9e9e;
+$color_9: grey;
+$color_10: white;
+$color_11: #bab6b3;
+$color_12: #fcf8f3;
+$font_family_1: PlutoSansCondBold;
+$font_family_2: PlutoSansCondRegular;
+$font_family_3: PlutoSansCondLight;
+$font_family_4: PlutoSansCondMedium;
+$font_family_5: Free-Regular-400;
+$background_color_1: #231f20;
+$background_color_2: #000;
+$background_color_3: #555;
+$background_color_4: #f5f6f8;
+
+/*By default, JobSity text is not shown in mobile devices */
+* {
+	box-sizing: border-box;
+}
+
+.parent {
+    padding: 0;
+}
+.content-container {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+.sidebar {
+	background-color: $background_color_1;
+	.left-items {
+		p {
+			padding: 0 12.5%;
+			margin-top: 2em;
+		}
+	}
+}
+.left-items {
+	.title {
+		color: $color_1;
+		font-family: $font_family_1;
+		font-size: 1em;
+		text-transform: uppercase;
+	}
+	color: $color_1;
+	font-family: $font_family_2;
+	font-size: 12px;
+	text-transform: capitalize;
+	margin-top: 2.7em;
+	a {
+		text-decoration: none;
+		color: $color_2;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	p {
+		font-size: 0.9em;
+	}
+	i {
+		margin-right: 1.5em;
+		margin-left: 0.2em;
+	}
+	#white {
+		color: $color_1;
+		margin-bottom: 4.5em;
+	}
+}
+.top-container {
+	color: $color_3;
+	overflow: auto;
+	.top-text {
+		padding: 1.2% 6.5% 1.2% 7.9%;
+		p {
+			display: inline-block;
+		}
+		#title-left {
+			color: $color_4;
+			font-family: $font_family_3;
+			margin-right: -1em;
+		}
+		#title-center {
+			color: $color_5;
+			font-family: $font_family_4;
+			font-size: 0.8em;
+			margin-left: 17em;
+			margin-right: 20.5em;
+			#text-one {
+				font-family: $font_family_4;
+				margin-right: 1em;
+				border-right: 1px solid rgba(151, 151, 151, 0.786628);
+				padding-right: 0.7em;
+			}
+			#text-two {
+				color: $color_6;
+				font-family: $font_family_2;
+			}
+		}
+		#title-right {
+			color: $color_2;
+		}
+	}
+}
+.center-content {
+	// .row {
+	// 	width: 86.4%;
+	// 	margin: 0 6% 0 7.6%;
+	// 	margin-bottom: 1.5%;
+	// 	display: flex;
+	// 	flex-wrap: wrap;
+	// 	justify-content: center;
+	// }
+	height: 100vh;
+	background-color: $background_color_4;
+	overflow-y: scroll;
+}
+
+
+
+.container {
+	&::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+}
+.title {
+	color: $color_9;
+}
+.button {
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: $color_10;
+	background-color: $background_color_2;
+	text-align: center;
+	cursor: pointer;
+	width: 100%;
+	&:hover {
+		background-color: $background_color_3;
+	}
+}
+.right-sidebar {
+	color: $color_11;
+	height: 100vh;
+	.content-list {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-content: space-around;
+		align-items: center;
+		margin-top: 1em;
+		margin-right: 1em;
+	}
+}
+.content-list {
+	.title-list {
+		color: $color_12;
+		font-family: $font_family_1;
+		font-size: 13px;
+		text-transform: uppercase;
+		opacity: 0.7;
+	}
+	li {
+		color: $color_12;
+		font-family: $font_family_3;
+		font-size: 10px;
+		margin-bottom: 2em;
+		opacity: 0.7;
+	}
+}
+.left-sidebar {
+	height: 100vh;
+}
+@media only screen and (min-width: 1190px) {
+	.navbar-header {
+		#jobsity-text {
+			display: inline;
+		}
+	}
+}
+
+@media screen and (max-width: 1280px) {
+	.sidebar {
+		width: 15%;
+	}
+	.center-content {
+		width: 70%;
+	}
+	.navbar-header {
+		.logo-container {
+			width: 15%;
+		}
+	}
+}
+@media screen and (min-width: 1280px) {
+	.sidebar {
+		width: 15%;
+	}
+	.center-content {
+		width: 70%;
+	}
+	.navbar-header {
+		.logo-container {
+			width: 15%;
+		}
+	}
+	.logo-container {
+		width: auto;
+	}
+}
+@media screen and (max-width: 768px) {
+	section.right-sidebar {
+		display: none;
+	}
+	section.center-content {
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.left-sidebar {
+		width: 100%;
+		height: auto;
+		position: relative;
+		display: none;
+		.left-items {
+			text-align: center;
+		}
+	}
+	.navbar-header {
+		#bookshelf {
+			display: none;
+		}
+	}
+	.top-container {
+		flex-direction: column;
+		align-items: center;
+		height: 4em;
+		flex-wrap: wrap;
+		.top-text {
+			justify-content: space-between;
+			#title-center {
+				flex-direction: row;
+				align-items: baseline;
+				justify-content: flex-start;
+				margin-left: 0;
+				margin-right: 0;
+			}
+			#title-left {
+				display: none;
+			}
+		}
+		#title-right {
+			justify-content: space-between;
+			margin-left: 5em;
+		}
+	}
+	.cover-info {
+		align-items: stretch;
+		flex-direction: column;
+		max-width: 8em;
+		text-align: left;
+	}
+	.sidebar {
+		height: auto;
+		padding: 15px;
+	}
+	.content-container {
+		height: auto;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.navbar-header {
+		#vertical-line {
+			height: 0;
+		}
+		.login {
+			a {
+				display: none;
+			}
+		}
+	}
+}
+@media screen and (max-width: 650px) {
+	.column {
+		width: 100%;
+		display: block;
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+	.navbar-header {
+		.search-container {
+			display: block;
+			width: auto;
+			margin-right: -10em;
+		}
+		#bookshelf {
+			display: none;
+		}
+	}
+	.top-text {
+		#title-right {
+			margin-left: 14em;
+		}
+	}
+	.top-container {
+		.top-text {
+			#title-left {
+				display: inline;
+			}
+			#title-center {
+				margin-left: 10em;
+			}
+		}
+	}
+	.login {
+		a {
+			display: none;
+		}
+	}
+}
+@media screen and (min-width: 1025px) and (max-width: 1310px) {
+	.navbar-header {
+		#bookshelf {
+			display: none;
+		}
+	}
+}

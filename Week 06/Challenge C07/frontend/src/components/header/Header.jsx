@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import logo from '../../assets/img/logo.svg';
 import avatar from '../../assets/img/avatar.png';
-import './Header.css';
+import './Header.scss';
 import Search from '../search/Search';
 
 export default class Header extends Component {

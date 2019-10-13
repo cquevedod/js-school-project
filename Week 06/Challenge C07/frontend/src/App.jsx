@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import Header from './components/header/Header';
+import BookGroup from './components/book-group/BookGroup';
 import Book from './components/book/Book';
 import Search from './components/search/Search';
-import QuickInfo from './components/QuickInfo';
 import Login from './components/login/Login';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.bookGroup = React.createRef();
+  }
+
   render() {
     return (
       <div className="parent">
@@ -68,7 +72,8 @@ export default class App extends Component {
                 </span>
               </div>
             </section>
-            <div id="bookshelfbooks" className="row">
+            <div id="bookshelfbooks">
+            <BookGroup ref={this.bookGroup} />
 
             </div>
 
@@ -87,8 +92,9 @@ export default class App extends Component {
             </div>
           </section>
         </div>
+
     </div>   
-  
+
   );
   }
  

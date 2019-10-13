@@ -1,0 +1,68 @@
+$font_family_1: Free-Solid-900;
+$font_family_2: PlutoSansRegular;
+$background_color_1: rgba(245, 246, 248, 0.51186);
+
+.search-container {
+	overflow: hidden;
+	border: 1px solid #6ec1e4;
+	border-radius: 21px 16px 16px 16px;
+	margin-right: -27em;
+	margin-top: 1.2%;
+	width: 12em;
+	height: 2.2em;
+	display: flex;
+	justify-content: right;
+	form {
+		display: flex;
+		justify-content: right;
+		align-items: center;
+		align-content: center;
+		width: 12em;
+		height: 2.2em;
+		background-color: $background_color_1;
+	}
+}
+.search-icon {
+	font-family: $font_family_1;
+	margin-left: 0.8em;
+	position: relative;
+	top: 0.2em;
+}
+.search-box {
+	border: none;
+	font-family: $font_family_2;
+	font-size: 0.8em;
+	padding: 0.6em 0.2em;
+	background: rgba(245, 246, 248, 0.51186);
+	width: 17em;
+	height: 2.2em;
+	border-radius: 21px 16px 16px 16px;
+	margin-left: 0.3em;
+}
+@media screen and (max-width: 1280px) {
+	.search-container {
+		width: auto;
+	}
+}
+@media screen and (min-width: 1280px) {
+	.search-container {
+		width: auto;
+	}
+}
+@media screen and (max-width: 768px) {
+	.search-container {
+		display: none;
+	}
+}
+@media only screen and (max-width: 1024px) {
+	.search-container {
+		width: auto;
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+	.search-container {
+		display: block;
+		width: auto;
+		margin-right: -10em;
+	}
+}

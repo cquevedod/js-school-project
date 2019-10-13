@@ -1,0 +1,124 @@
+$color_1: #000;
+$color_2: #000000;
+$font_family_1: PlutoSansBlack;
+$font_family_2: PlutoSansMedium;
+$font_family_3: PlutoSansCondLight;
+$font_family_4: Free-Solid-900;
+$background_color_1: #fcf9f4;
+$background_color_2: #ffffff;
+$background_color_3: inherit;
+$border_color_1: #6ec1e4;
+
+* {
+	box-sizing: inherit;
+	box-sizing: border-box;
+	&:before {
+		box-sizing: inherit;
+	}
+	&:after {
+		box-sizing: inherit;
+	}
+}
+
+.navbar-header {
+	overflow: hidden;
+	background-color: $background_color_1;
+	border-bottom: 1px Solid #6ec1e4;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	.logo-container {
+		display: flex;
+		flex-direction: row;
+		background-color: $background_color_2;
+		width: 12.6em;
+		align-items: center;
+	}
+	a {
+		display: block;
+		text-align: center;
+		padding: 10px 5px;
+		text-decoration: none;
+		color: $color_1;
+	}
+	.logo {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		margin-left: 15px;
+		margin-right: -0.6em;
+	}
+	#jobsity-text {
+		font-family: $font_family_1;
+		font-size: 24px;
+		margin-right: 30px;
+    }
+    
+    @media screen and (max-width: 767px) {
+        .navbar-header {
+            #jobsity-text {
+                display: none;
+            }
+        }
+    }
+	#text-box {
+		padding-top: 1em;
+		margin-right: -0.5em;
+	}
+	#bookshelf {
+		font-family: $font_family_2;
+		font-size: 20px;
+		margin-top: 2px;
+		display: flex;
+		justify-content: left;
+		margin-left: -22.5em;
+	}
+	#book-box {
+		margin-top: 0.5em;
+	}
+	span {
+		padding: 8px;
+	}
+	.login {
+		display: flex;
+		justify-content: flex-end;
+		overflow: hidden;
+		margin-right: 1em;
+		margin-top: 0.7em;
+		height: 3em;
+		border-left: 1px solid #979797;
+	}
+	.avatar {
+		vertical-align: middle;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		border-style: solid;
+		border-color: $border_color_1;
+		margin-left: 0.5em;
+	}
+}
+.nav-center-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.login {
+	a {
+		font-size: 12px;
+		border: none;
+		outline: none;
+		color: $color_2;
+		padding: 1em 1.1em 1em 4.7em;
+		background-color: $background_color_3;
+		font-family: $font_family_3;
+		margin: 0;
+	}
+}
+.user {
+	.angle-icon {
+		font-family: $font_family_4;
+		margin-left: 0.7em;
+	}
+}

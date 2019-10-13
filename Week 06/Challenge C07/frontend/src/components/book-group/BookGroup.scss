@@ -1,0 +1,16 @@
+.row {
+	width: 86.4%;
+	margin: 0 6% 0 7.6%;
+	margin-bottom: 1.5%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.row {
+	&::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+}
