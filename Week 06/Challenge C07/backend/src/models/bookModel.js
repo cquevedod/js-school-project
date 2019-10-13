@@ -11,6 +11,7 @@ let BookSchema = Schema({
   pageCount: Number,
   description: String,
   rating: Number,
+  thumbnail: String,
   bookShelf: String,
   isLent: Boolean,
   returnDate: String,
