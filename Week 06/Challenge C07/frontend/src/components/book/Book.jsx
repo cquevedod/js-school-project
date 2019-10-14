@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Book.scss';
-import heartImage from '../../assets/img/rate-book/heart.png';
-import openedBookImg from '../../assets/img/rate-book/opened-book.png';
-import bookmarkImg from '../../assets/img/rate-book/bookmark.png';
-
 
 export default class Book extends Component {
   constructor(props) {
@@ -126,74 +122,74 @@ export default class Book extends Component {
                 </div>
 
                 <div className="bookmark-button-cell">
-                <div
-                  className="bookmark-button-wrapper"
-                  onClick={this.clickBookmarkHandler}
-                  onKeyDown={this.clickBookmarkHandler}
-                  role="button"
-                  tabIndex="0"
-                >
-                  <i className={`${bookmarked ? 'fa' : 'far'} fa-bookmark`} />
+                  <div
+                    className="bookmark-button-wrapper"
+                    onClick={this.clickBookmarkHandler}
+                    onKeyDown={this.clickBookmarkHandler}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <i className={`${bookmarked ? 'fa' : 'far'} fa-bookmark`} />
+                  </div>
                 </div>
-              </div>
-              <div className="description-button-cell">
-                <div
-                  className="description-button-wrapper"
-                  onClick={this.clickDescriptionHandler}
-                  onKeyDown={this.clickDescriptionHandler}
-                  role="button"
-                  tabIndex="0"
-                >
-                  <i className="fa fa-book-open" />
+                <div className="description-button-cell">
+                  <div
+                    className="description-button-wrapper"
+                    onClick={this.clickDescriptionHandler}
+                    onKeyDown={this.clickDescriptionHandler}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <i className="fa fa-book-open" />
+                  </div>
                 </div>
-              </div>
-              <div className="seethrough-title-rating">
-                <div className="seethrough-title">
+                <div className="seethrough-title-rating">
+                  <div className="seethrough-title">
                     RATE THIS BOOK
                 </div>
-                <div className="seethrough-rating">
-                  <i
-                    className={`${userRating >= 1 ? 'fa' : 'far'} fa-star`}
-                    onClick={(event) => this.clickRatingHandler(event, 1)}
-                    onKeyDown={(event) => this.clickRatingHandler(event, 1)}
-                    tabIndex="0"
-                    role="button"
-                    aria-label="Rate 1 star"
-                  />
-                  <i
-                    className={`${userRating >= 2 ? 'fa' : 'far'} fa-star`}
-                    onClick={(event) => this.clickRatingHandler(event, 2)}
-                    onKeyDown={(event) => this.clickRatingHandler(event, 2)}
-                    tabIndex="0"
-                    role="button"
-                    aria-label="Rate 2 stars"
-                  />
-                  <i
-                    className={`${userRating >= 3 ? 'fa' : 'far'} fa-star`}
-                    onClick={(event) => this.clickRatingHandler(event, 3)}
-                    onKeyDown={(event) => this.clickRatingHandler(event, 3)}
-                    tabIndex="0"
-                    role="button"
-                    aria-label="Rate 3 stars"
-                  />
-                  <i
-                    className={`${userRating >= 4 ? 'fa' : 'far'} fa-star`}
-                    onClick={(event) => this.clickRatingHandler(event, 4)}
-                    onKeyDown={(event) => this.clickRatingHandler(event, 4)}
-                    tabIndex="0"
-                    role="button"
-                    aria-label="Rate 4 stars"
-                  />
-                  <i
-                    className={`${userRating >= 5 ? 'fa' : 'far'} fa-star`}
-                    onClick={(event) => this.clickRatingHandler(event, 5)}
-                    onKeyDown={(event) => this.clickRatingHandler(event, 5)}
-                    tabIndex="0"
-                    role="button"
-                    aria-label="Rate 5 stars"
-                  />
+                  <div className="seethrough-rating">
+                    <i
+                      className={`${userRating >= 1 ? 'fa' : 'far'} fa-star`}
+                      onClick={(event) => this.clickRatingHandler(event, 1)}
+                      onKeyDown={(event) => this.clickRatingHandler(event, 1)}
+                      tabIndex="0"
+                      role="button"
+                      aria-label="Rate 1 star"
+                    />
+                    <i
+                      className={`${userRating >= 2 ? 'fa' : 'far'} fa-star`}
+                      onClick={(event) => this.clickRatingHandler(event, 2)}
+                      onKeyDown={(event) => this.clickRatingHandler(event, 2)}
+                      tabIndex="0"
+                      role="button"
+                      aria-label="Rate 2 stars"
+                    />
+                    <i
+                      className={`${userRating >= 3 ? 'fa' : 'far'} fa-star`}
+                      onClick={(event) => this.clickRatingHandler(event, 3)}
+                      onKeyDown={(event) => this.clickRatingHandler(event, 3)}
+                      tabIndex="0"
+                      role="button"
+                      aria-label="Rate 3 stars"
+                    />
+                    <i
+                      className={`${userRating >= 4 ? 'fa' : 'far'} fa-star`}
+                      onClick={(event) => this.clickRatingHandler(event, 4)}
+                      onKeyDown={(event) => this.clickRatingHandler(event, 4)}
+                      tabIndex="0"
+                      role="button"
+                      aria-label="Rate 4 stars"
+                    />
+                    <i
+                      className={`${userRating >= 5 ? 'fa' : 'far'} fa-star`}
+                      onClick={(event) => this.clickRatingHandler(event, 5)}
+                      onKeyDown={(event) => this.clickRatingHandler(event, 5)}
+                      tabIndex="0"
+                      role="button"
+                      aria-label="Rate 5 stars"
+                    />
+                  </div>
                 </div>
-              </div>
                 <i className="fas fa-caret-left arrow"></i>
                 <div id="bookModalInfo" className="bookModalInfo" >
                   <div id="modalHeader">
@@ -212,11 +208,11 @@ export default class Book extends Component {
                   </article>
                   <p id="ratingTitle" style={{ margin: '1% 0' }}>RATING</p>
                   <div className="star-rating rate">
-                  <i className={`${averageRating >= 1 ? 'fa' : 'far'} fa-star`} />
-          <i className={`${averageRating >= 2 ? 'fa' : 'far'} fa-star`} />
-          <i className={`${averageRating >= 3 ? 'fa' : 'far'} fa-star`} />
-          <i className={`${averageRating >= 4 ? 'fa' : 'far'} fa-star`} />
-          <i className={`${averageRating >= 5 ? 'fa' : 'far'} fa-star`} />
+                    <i className={`${averageRating >= 1 ? 'fa' : 'far'} fa-star`} />
+                    <i className={`${averageRating >= 2 ? 'fa' : 'far'} fa-star`} />
+                    <i className={`${averageRating >= 3 ? 'fa' : 'far'} fa-star`} />
+                    <i className={`${averageRating >= 4 ? 'fa' : 'far'} fa-star`} />
+                    <i className={`${averageRating >= 5 ? 'fa' : 'far'} fa-star`} />
                   </div>
                   <p style={{ margin: '6% 0' }}></p>
                   <p className="recommend" style={{ margin: '1% 0' }}>RECOMMENDED BY</p>
@@ -232,11 +228,11 @@ export default class Book extends Component {
               <p className="book-title">{title}</p>
               <p className="book-author">{author}</p>
               <div className="star-rating rate">
-              <i className={`${averageRating >= 1 ? 'fa' : 'far'} fa-star`} />
-          <i className={`${averageRating >= 2 ? 'fa' : 'far'} fa-star`} />
-          <i className={`${averageRating >= 3 ? 'fa' : 'far'} fa-star`} />
-          <i className={`${averageRating >= 4 ? 'fa' : 'far'} fa-star`} />
-          <i className={`${averageRating >= 5 ? 'fa' : 'far'} fa-star`} />
+                <i className={`${averageRating >= 1 ? 'fa' : 'far'} fa-star`} />
+                <i className={`${averageRating >= 2 ? 'fa' : 'far'} fa-star`} />
+                <i className={`${averageRating >= 3 ? 'fa' : 'far'} fa-star`} />
+                <i className={`${averageRating >= 4 ? 'fa' : 'far'} fa-star`} />
+                <i className={`${averageRating >= 5 ? 'fa' : 'far'} fa-star`} />
               </div>
             </div>
           </div>
