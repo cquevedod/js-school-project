@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react';
-// import './BookGroup.scss';
 import Book from '../book/Book';
 import './BookGroup.scss'
 
@@ -17,7 +16,7 @@ export default class BookGroup extends Component {
     this.fetchBooks();
   }
 
-   fetchBooks() {
+  fetchBooks() {
     const { params } = this;
     const token = sessionStorage.getItem('token');
     if (!params.searchInput) delete params.searchInput;
@@ -34,25 +33,25 @@ export default class BookGroup extends Component {
       .then((data) => {
         console.log(data);
         const bookElements = data.books.map((book) => (
-            
-        <Book
-          title={book.title}
-          author={book.author}
-          publishedDate={book.publishedDate ? book.publishedDate.split('-')[0] : 'Not available'}
-          description={book.description}
-          averageRating={book.averageRating ? Math.round(book.averageRating) : 0}
-          thumbnail={book.thumbnail}
-          id={book.id}
-          key={book.id}
-          pageCount={`${book.pageCount}`}
-        />
-      ));
+
+          <Book
+            title={book.title}
+            author={book.author}
+            publishedDate={book.publishedDate ? book.publishedDate.split('-')[0] : 'Not available'}
+            description={book.description}
+            averageRating={book.averageRating ? Math.round(book.averageRating) : 0}
+            thumbnail={book.thumbnail}
+            id={book.id}
+            key={book.id}
+            pageCount={`${book.pageCount}`}
+          />
+        ));
 
 
-      this.setState({
-        booksItems: bookElements,
+        this.setState({
+          booksItems: bookElements,
+        });
       });
-    });
   }
 
   render() {
