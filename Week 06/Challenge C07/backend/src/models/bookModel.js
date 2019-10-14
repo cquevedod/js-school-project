@@ -10,7 +10,7 @@ let BookSchema = Schema({
   author: String,
   pageCount: Number,
   description: String,
-  rating: Number,
+  averageRating: Number,
   thumbnail: String,
   bookShelf: String,
   isLent: Boolean,
