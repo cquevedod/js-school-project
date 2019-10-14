@@ -51,6 +51,111 @@ $background_color_2: rgba(35, 31, 32, 0.88);
 	}
 }
 
+.book-cover-seethrough-unselected {
+	display: none;
+  }
+  
+.book-cover-seethrough-selected {
+	background: rgba(35, 31, 32, 0.88);
+	position: absolute;
+	top: 0rem;
+	left: 0rem;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: min-content 1fr min-content;
+	grid-template-rows: 1fr 3fr 1fr;
+	padding: 0.625rem;
+  }
+
+  .heart-button-cell {
+	grid-column: 1;
+	grid-row: 1;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+  }
+
+  .heart-button-wrapper {
+	grid-column: 1;
+	grid-row: 1;
+	border-radius: 100%;
+	background-color: #FFFFFF;
+	color: #9E9E9E;
+	width: 1.5625rem;
+	height: 1.5625rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.75rem;
+  }
+
+  .bookmark-button-cell {
+	grid-column: 3;
+	grid-row: 1;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-start;
+  }
+  
+  .bookmark-button-wrapper {
+	grid-column: 3;
+	grid-row: 1;
+	border-radius: 100%;
+	background-color: #FFFFFF;
+	color: #9E9E9E;
+	width: 1.5625rem;
+	height: 1.5625rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.75rem;
+  }
+  
+  .description-button-cell {
+	grid-column: 2;
+	grid-row: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .description-button-wrapper {
+	grid-column: 2;
+	grid-row: 2;
+	border-radius: 100%;
+	background-color: #FFFFFF;
+	color: #6EC1E4;
+	width: 2.5rem;
+	height: 2.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+
+  .seethrough-title-rating {
+	grid-column: 2;
+	grid-row: 3;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+  }
+  
+  .seethrough-title {
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	font-family: 'Pluto Sans Cond Medium';
+	font-size: 0.625rem;
+	color: #FCF8F3;
+	margin-bottom: 0.25rem;
+  }
+  
+  .seethrough-rating {
+	font-size: 0.625rem;
+	color: #E9BD49;
+  }
 
 .cover {
 	.cover-info {
@@ -85,6 +190,11 @@ $background_color_2: rgba(35, 31, 32, 0.88);
 .checked {
 	color: $color_3;
 }
+
+// .cover {
+// 	width: 8.9em;
+// 	height: 13em;
+// }
 .onClickTextOverImage {
 	width: 8.9em;
 	height: 13em;
@@ -95,6 +205,8 @@ $background_color_2: rgba(35, 31, 32, 0.88);
 	cursor: pointer;
 	position: relative;
 	background-repeat: no-repeat;
+
+}
 	.arrow {
 		visibility: hidden;
 		position: absolute;
@@ -121,7 +233,7 @@ $background_color_2: rgba(35, 31, 32, 0.88);
 		color: $color_4;
 		font-size: 0.75em;
 	}
-}
+
 .info-over-cover {
 	position: absolute;
 	color: $color_4;
@@ -158,11 +270,7 @@ $background_color_2: rgba(35, 31, 32, 0.88);
 	}
 }
 .onClickTextOverImage.show {
-	.info-over-cover {
-		opacity: 1;
-		padding-top: 40%;
-		visibility: visible;
-	}
+
 	.arrow {
 		opacity: 1;
 		visibility: visible;
