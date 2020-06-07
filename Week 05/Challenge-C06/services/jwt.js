@@ -1,5 +1,3 @@
-'use strict';
-
 const jwt = require('jwt-simple');
 const moment = require('moment'); 
 let secret = 'one_second'; 
