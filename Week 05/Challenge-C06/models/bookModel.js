@@ -1,6 +1,7 @@
-"use strict";
 
-const mongoose = require("mongoose");
+  const User = require('./userModel');
+
+const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let BookSchema = Schema({
@@ -14,7 +15,11 @@ let BookSchema = Schema({
   bookShelf: String,
   isLent: Boolean,
   returnDate: String,
-  isbn: String
+  isbn: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 });
 
-module.exports = mongoose.model("Book", BookSchema);
+module.exports = mongoose.model('Book', BookSchema);

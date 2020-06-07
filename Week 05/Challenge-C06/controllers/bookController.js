@@ -1,52 +1,41 @@
-"use strict";
 
-const msg = require("./statusMsg");
-const Book = require("../models/bookModel");
+const msg = require('./statusMsg');
+const Book = require('../models/bookModel');
 
 async function getBookById(req, res) {
   try {
     const bookId = req.params.id;
-    const query = await Book.find({ id: bookId }).exec();
-    if (!query.length) {
-      return res
-        .status(404)
-        .send(msg.notFound("Book doesn't exist"));
-    }
+    const query = await Book.find({ id: bookId });
+    
+    if (!query.length) return res.status(404).send(msg.notFound('Book does not exist'));
+
     return res.send(msg.ok(query));
   } catch (err) {
-    console.log("error: ", err);
+    console.log('error: ', err);
   }
 }
 
 function getAllBooksOrByBookshelf(req, res) {
   const input = req.query.bookshelf;
+
   if (input) {
     let location = input[0].toUpperCase() + input.slice(1);
-    const query = Book.find({ bookShelf: location }).exec();
+    const query = Book.find({ bookShelf: location });
     query.then(data => {
-      if (!data.length) {
-        return res
-           .status(400)
-           .send(msg.badRequest());
-      }
-      return res
-        .send(msg.ok(data, `${location} books`));
+      if (!data.length) return res.status(400).send(msg.badRequest());
+      return res.send(msg.ok(data, `${location} books`));
     }).catch(function(err) {
-      console.log("error: ", err);
+      console.log('error: ', err);
     });
+
   } else {
-    const query = Book.find().exec();
+    const query = Book.find();
     query.then(data => {
-      if (!data.length) {
-        return res
-          .status(204)
-          .send(msg.noContent());
-      }
-      return res
-        .send(msg.ok(data, "All Books!"));
+      if (!data.length) return res.status(204).send(msg.noContent());
+      return res.send(msg.ok(data, 'All Books!'));
       })
       .catch(function(err) {
-        console.log("error: ", err);
+        console.log('error: ', err);
       });
   }
 }
@@ -54,45 +43,31 @@ function getAllBooksOrByBookshelf(req, res) {
 function lendBook(req, res) {
   const bookId = req.params.id;
   const body = req.body;
-  const query = Book.find({ id: bookId }).exec();
+  const query = Book.find({ id: bookId });
   query.then(book => {
-      if (!book.length) {
-        res
-          .status(404)
-          .send(msg.notFound("Item doesn't exist"));
-        return;
-      }
-      if (book[0].bookShelf == "Digital") {
+      if (!book.length) return res.status(404).send(msg.notFound('Item does not exist'));
+
+      if (book[0].bookShelf == 'Digital') {
         Book.updateOne({ id: bookId },
-          { $set: { isLent: false }})
-          .exec();
-        return res
-          .status(401)
-          .send(msg.unAuthorized("You can't lend a Digital book!", book));
+          { $set: { isLent: false }}).exec();
+        return res.status(401).send(msg.unAuthorized(book, 'You can not lend a Digital book!'));
       } else {
         if (book[0].isLent) {
-          res
-            .status(401)
-            .send(msg.alreadyLentOrNot(book, "This book is already Lent!"));
+         return res.status(401).send(msg.alreadyLentOrNot(book, 'This book is already Lent!'));
         } else {
-          if(body.return_date) {
+          if (body.return_date) {
             Book.updateOne({ id: bookId },
               { $set: { isLent: true,
-              returnDate: body.return_date}})
-              .exec();
-            res
-              .status(200)
-              .send(msg.lentTheBook(book, "Book lent!", body.return_date));
+              returnDate: body.return_date}}).exec();
+            return res.status(200).send(msg.lentTheBook(book, 'Book lent!', body.return_date));
           } else {
-            res
-              .status(400)
-              .send(msg.invalidLentDate());
+            return res.status(400).send(msg.invalidLentDate());
           }
         }
       }
     })
     .catch(function(err) {
-      console.log("error: ", err);
+      console.log('error: ', err);
     });
 }
 

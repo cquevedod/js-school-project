@@ -1,6 +1,6 @@
-"use strict";
 
-const mongoose = require("mongoose");
+
+const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let UserSchema = Schema({
@@ -11,4 +11,4 @@ let UserSchema = Schema({
   role: String
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model('User', UserSchema);

@@ -1,8 +1,7 @@
-'use strict';
 
 const jwt = require('jwt-simple');
 const moment = require('moment');
-const msg = require("../controllers/statusMsg");
+const msg = require('../controllers/statusMsg');
 let secret = 'one_second'; // secret key to hash createToken object
 
 exports.ensureAuth = function(req, res, next) {
@@ -17,9 +16,7 @@ exports.ensureAuth = function(req, res, next) {
   try {
     //var used here because of scope. if use let, the payload in the line 27 will be undefined
     var payload = jwt.decode(token, secret); 
-    if (payload.exp <= moment().unix()) {
-      return res.status(401).send({ message: 'Token has expired' });
-    }
+    if (payload.exp <= moment().unix()) return res.status(401).send({ message: 'Token has expired' });
   } catch (ex) {
     console.log(ex);
     return res.status(401).send(msg.unAuthorized('Invalid authentication Token'));

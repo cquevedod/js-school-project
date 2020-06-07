@@ -1,15 +1,15 @@
-"use strict";
-const bcrypt = require("bcryptjs");
-const User = require("../models/userModel");
-const jwt = require("../services/jwt");
-const msg = require("./statusMsg");
+
+const bcrypt = require('bcryptjs');
+const User = require('../models/userModel');
+const jwt = require('../services/jwt');
+const msg = require('./statusMsg');
 
 function register(req, res) {
   let user = new User();
   let params = req.body;
   user.name = params.name;
   user.surname = params.surname;
-  user.role = "ROLE_USER";
+  user.role = 'ROLE_USER';
 
   if (params.email) {
     let query = User.find({ email: params.email }).exec();
@@ -26,7 +26,7 @@ function register(req, res) {
       }
     })
       .catch(function(err) {
-        console.log("error: ", err);
+        console.log('error: ', err);
       }); 
   } 
   if (params.password && params.name && params.email) {
@@ -36,12 +36,12 @@ function register(req, res) {
         if (err) {
           res
             .status(500)
-            .send({ message: "Error trying to save the user" });
+            .send({ message: 'Error trying to save the user' });
         } else {
           if (!userStored) {
             res
               .status(404)
-              .send(msg.notFound("User not registered"));
+              .send(msg.notFound('User not registered'));
           } else {
             res
               .status(200)
@@ -75,7 +75,7 @@ function loginUser(req, res) {
       if (!user) {
         res
           .status(404)
-          .send(msg.notFound("The user doesn't exist"));
+          .send(msg.notFound('The user does not exist'));
       } else {
         bcrypt.compare(password, user.password, function(err, check) {
           if (check) {
@@ -88,7 +88,7 @@ function loginUser(req, res) {
           } else {
             res
               .status(404)
-              .send(msg.notFound("Wrong data"));
+              .send(msg.notFound('Wrong data'));
           }
           });
       }
