@@ -22,7 +22,7 @@ app.get('/test', (req, res) => {
   res.status(200).send({message: 'Test succesful'})
 });
 
-app.get('/api/populateDB', (req, res) => {
+app.get('/api/populatedb', (req, res) => {
   data.populateDB(req, res);
 });
 

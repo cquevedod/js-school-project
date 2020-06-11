@@ -1,4 +1,4 @@
-function ok (data, msg) {
+function ok (data, msg='Sucess!') {
   const response = {
     status: 200,
     description: 'OK',
@@ -19,14 +19,13 @@ function okUser (msg, registeredUser) {
   return response;
 }
 
-function lentTheBook (book, msg, rDate) {
+function lentTheBook (book, msg) {
   const response = {
     status: 200,
     description: 'OK',
     message: msg,
     items: book.length,
     bookID: book[0].id,
-    return_date: rDate,
   };
   return response;
 }
@@ -35,8 +34,8 @@ function invalidLentDate () {
   const response = {
     status: 400,
     description: 'Bad request',
-    message: 'Please enter a valid body key',
-    valid_key: 'return_date',
+    message: 'Please enter a valid date',
+    valid_date_format: 'YYYY-MM-DD',
   };
   return response;
 }

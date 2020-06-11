@@ -11,36 +11,38 @@ function register(req, res) {
   user.surname = params.surname;
   user.role = 'ROLE_USER';
 
-  if (params.email) {
-    let query = User.find({ email: params.email }).exec();
-    query.then(data => {
-      if (!data.length) {
+  if (params.password && params.name && params.email) {
+    User.find({ email: params.email })
+    .then(document => {
+      if(!document.length) {
         user.email = params.email;
+        bcrypt.hash(params.password, 10, function(err, hash) {
+          user.password = hash;
+          user.save((err, userStored) => {
+            if (err) {
+              console.log(err)
+              return res.status(500).send({ message: 'Error trying to save the user', err });
+            } else {
+              if (!userStored) {
+                return res.status(404).send(msg.notFound('User not registered'));
+              } else {
+               User.updateOne({ _id: userStored._id },
+                { $set: { createdAt: userStored._id.getTimestamp() }
+               }).exec();
+               return res.status(200).send(msg.okUser('Success registering!', userStored));
+              }
+            }
+          });
+                   
+        });
       } else {
-        let result = msg.duplEmail('There is a user with this email!');
-        return res.status(401).send(result);
+        return res.status(401).send(msg.duplEmail('There is a user with this email!'));
       }
     })
-      .catch(function(err) {
-        console.log('error: ', err);
-      }); 
-  } 
-  if (params.password && params.name && params.email) {
-    bcrypt.hash(params.password, 10, function(err, hash) {
-      user.password = hash;
-      user.save((err, userStored) => {
-        if (err) {
-          return res.status(500).send({ message: 'Error trying to save the user' });
-        } else {
-          if (!userStored) {
-            return res.status(404).send(msg.notFound('User not registered'));
-          } else {
-           return res.status(200).send(msg.okUser('Success registering!', userStored));
-          }
-        }
-      });
-       
+    .catch(function(err) {
+      console.log('error: ', err);
     });
+
   } else {
     return res.status(422).send(msg.dataRequired('Please complete the required data'));
   }
@@ -60,10 +62,11 @@ function loginUser(req, res) {
         } else {
           bcrypt.compare(password, user.password, function(err, check) {
             if (check) {
+              let token = jwt.createToken(user);
               return res.status(200)
                 .send({
                   email : email,
-                  token: jwt.createToken(user)
+                  token
                 });
             } else {
               return res.status(404).send(msg.notFound('Wrong data'));

@@ -68,7 +68,7 @@ its time to populate the `books` collection! In order to do that we need import 
  Open Postman and use the following endpoint in GET mode: 
 
 ```
-http://localhost:3977/api/populateDB
+http://localhost:3977/api/populatedb
 ```
 
 The result should be a `db populated` message and we have the books collection filled with books data. 

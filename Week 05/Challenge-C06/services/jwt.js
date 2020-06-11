@@ -17,3 +17,16 @@ exports.createToken = function(user) {
   return jwt.encode(payload, secret);
 };
 
+exports.decodeToken = function(token) {
+  let tokenParsed = token.replace(/['"]+/g, ""); 
+  try {
+    //var used here because of scope. if use let, the payload in the line 27 will be undefined
+    var payload = jwt.decode(tokenParsed, secret); 
+
+  } catch (ex) {
+    console.log(ex);
+  }
+  return payload;
+
+}
+

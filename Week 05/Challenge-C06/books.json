@@ -10,7 +10,6 @@
       "rating": 5,
       "bookShelf": "Cartagena",
       "isLent": false,
-      "returnDate": "DD/MM/YYYY",
       "isbn": "9781506701301"
     },
     {
@@ -35,7 +34,6 @@
       "rating": 0,
       "bookShelf": "Quito",
       "isLent": false,
-      "returnDate": "DD/MM/YYYY",
       "isbn": "9781608864843"
     },
     {
@@ -48,7 +46,6 @@
       "rating": 0,
       "bookShelf": "Medellin",
       "isLent": false,
-      "returnDate": "DD/MM/YYYY",
       "isbn": "9781606601006"
     },
     {
@@ -73,7 +70,6 @@
       "rating": 4,
       "bookShelf": "Quito",
       "isLent": false,
-      "returnDate": "DD/MM/YYYY",
       "isbn": "9780545093118"
     },
     {
@@ -86,7 +82,6 @@
       "rating": 0,
       "bookShelf": "Cartagena",
       "isLent": false,
-      "returnDate": "DD/MM/YYYY",
       "isbn": "9780192752291"
     },
     {
@@ -99,7 +94,6 @@
       "rating": 5,
       "bookShelf": "Medellin",
       "isLent": false,
-      "returnDate": "DD/MM/YYYY",
       "isbn": "9781416995647"
     },
     {
@@ -112,7 +106,6 @@
       "rating": 3,
       "bookShelf": "Cartagena",
       "isLent": false,
-      "returnDate": "DD/MM/YYYY",
       "isbn": "9781481424431"
     },
     {
@@ -137,7 +130,6 @@
       "rating": 4,
       "bookShelf": "Quito",
       "isLent": false,
-      "returnDate": "DD/MM/YYYY",
       "isbn": "9780547020280"
     },
     {
@@ -161,8 +153,7 @@
       "description": "Que quelque chose de notre \" nature humaine \" se trouve étrangement éclairé par l'analyse phénoménologique des rapports complexes entre phantasia, imagination et affectivité, telle est l'énigme qui traverse ce livre comme un fil rouge. Autant la phénoménologie comme telle s'occupe des phénomènes en leur statut transcendantal, autant la précision qui leur est apportée par la prise en compte de leur dimension imaginative et affective, conduit-elle à délimiter, à l'intérieur de la phénoménologie, le champ de l'anthropologie phénoménologique. Et, à l'intérieur de ce champ, les psychopathologies sont un véritable révélateur. Les analyses phénoménologiques qui en sont proposées ici conduisent à prendre la mesure, souvent démesurée, de l'homme, et à affiner en retour les structures que la phénoménologie dégage pour sa part. Analyses en zigzags ou en spirale qui permettent de voir et de décrire les rivages d'une terre, mais qui est une terra incognita : la nôtre. Voyage long, difficile, aventureux où l'énigme reste entière mais a changé de visage. Alors qu'il y a quelque chose de non humain dans la rationalité, et qui a tant séduit la tradition philosophique, dans le champ qui se découvre ici, l'imagination, dans ses rapports complexes avec l'affectivité, paraît, en écho à Nietzsche, humaine, trop humaine. Lieu d'illusions multiples, affectives, mais aussi axiologiques, au plus loin de toute idéologie et de toute évaluation, toutes deux ratiocinantes, au plus près d'une reprise lucide des horizons symboliques de l'institution symbolique dans laquelle nous vivons et qui nous fait vivre. La question est peut-être finalement: qu'est-ce que vivre, et vivre humainement ? Vivre, et non pas être ?",
       "rating": 0,
       "bookShelf": "Medellin",
-      "isLent": true,
-      "returnDate": "13/10/2019",
+      "isLent": false,
       "isbn": "9782841371600"
     },
     {
@@ -175,7 +166,6 @@
       "rating": 0,
       "bookShelf": "Cartagena",
       "isLent": false,
-      "returnDate": "DD/MM/YYYY",
       "isbn": "9781608868322"
     },
     {
@@ -199,8 +189,7 @@
       "description": "On the run from the Queen's Dragons and struggling to track down Dessa's missing twin brother, Dessa, Topper and Fisk inadvertently rescue a prince and find that their actions have placed royal kingdoms and a romance at risk. Simultaneous.",
       "rating": 3,
       "bookShelf": "Quito",
-      "isLent": true,
-      "returnDate": "11/10/2019",
+      "isLent": false,
       "isbn": "9781554537778"
     }
   ]

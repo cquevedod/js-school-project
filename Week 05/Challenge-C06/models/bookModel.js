@@ -4,19 +4,29 @@ const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let BookSchema = Schema({
-  id: String,
+  id: {
+    type:String,
+    unique: true
+  },
   title: String,
   publishedDate: String,
   author: String,
   pageCount: Number,
   description: String,
   rating: Number,
-  bookShelf: String,
+  bookShelf: {
+    type: String,
+    enum: ['Cartagena', 'Medellin', 'Quito', 'Digital']
+  },
   isLent: Boolean,
-  returnDate: String,
+  returnDate: {
+    type: Date,
+    trim: true,
+  },
   isbn: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
+    required: function() { return this.isLent; },
     ref: 'User'
   }
 });
