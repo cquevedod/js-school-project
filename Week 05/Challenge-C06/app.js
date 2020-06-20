@@ -10,16 +10,16 @@ const data = require('./getData');
 const user_routes = require('./routes/userRoute');
 const book_routes = require('./routes/bookRoute');
 
-app.use(bodyparser.urlencoded({ extended:false }));
+app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
 app.use(cors());
 
-app.use('/api', user_routes); 
-app.use('/api', book_routes); 
+app.use('/api', user_routes);
+app.use('/api', book_routes);
 
 app.get('/test', (req, res) => {
-  res.status(200).send({message: 'Test succesful'})
+  res.status(200).send({ message: 'Test succesful' })
 });
 
 app.get('/api/populatedb', (req, res) => {

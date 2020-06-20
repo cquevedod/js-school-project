@@ -5,7 +5,7 @@ let Schema = mongoose.Schema;
 
 let BookSchema = Schema({
   id: {
-    type:String,
+    type: String,
     unique: true
   },
   title: String,
@@ -26,7 +26,7 @@ let BookSchema = Schema({
   isbn: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    required: function() { return this.isLent; },
+    required: function () { return this.isLent; },
     ref: 'User'
   }
 });

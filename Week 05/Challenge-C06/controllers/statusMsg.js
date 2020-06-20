@@ -1,4 +1,4 @@
-function ok (data, msg='Sucess!') {
+function ok(data, msg = 'Sucess!') {
   const response = {
     status: 200,
     description: 'OK',
@@ -9,7 +9,7 @@ function ok (data, msg='Sucess!') {
   return response;
 }
 
-function okUser (msg, registeredUser) {
+function okUser(msg, registeredUser) {
   const response = {
     status: 200,
     description: 'OK',
@@ -19,7 +19,7 @@ function okUser (msg, registeredUser) {
   return response;
 }
 
-function lentTheBook (book, msg) {
+function lentTheBook(book, msg) {
   const response = {
     status: 200,
     description: 'OK',
@@ -30,7 +30,7 @@ function lentTheBook (book, msg) {
   return response;
 }
 
-function invalidLentDate () {
+function invalidLentDate() {
   const response = {
     status: 400,
     description: 'Bad request',
@@ -40,7 +40,7 @@ function invalidLentDate () {
   return response;
 }
 
-function alreadyLentOrNot (book, msg) {
+function alreadyLentOrNot(book, msg) {
   const response = {
     status: 401,
     description: 'Unauthorized',
@@ -53,7 +53,7 @@ function alreadyLentOrNot (book, msg) {
   return response;
 }
 
-function noContent () {
+function noContent() {
   const response = {
     status: 204,
     description: 'No Content',
@@ -62,18 +62,18 @@ function noContent () {
   return response;
 }
 
-function badRequest () {
- const result = {  
+function badRequest() {
+  const result = {
     status: 400,
     description: 'Bad Request',
     message: 'Enter a valid bookshelf!',
     valid_bookshelves: ['Cartagena', 'Medellin',
-     'Quito', 'Digital']
+      'Quito', 'Digital']
   };
   return result;
 }
 
-function unAuthorized (book, msg) {
+function unAuthorized(book, msg) {
   const response = {
     status: 401,
     description: 'Unauthorized',
@@ -85,7 +85,7 @@ function unAuthorized (book, msg) {
   return response;
 }
 
-function notFound (msg) {
+function notFound(msg) {
   const response = {
     status: 404,
     description: 'Not Found',
@@ -94,7 +94,7 @@ function notFound (msg) {
   return response;
 }
 
-function internalError (msg) {
+function internalError(msg) {
   const response = {
     status: 500,
     description: 'Internal Server Error',
@@ -103,7 +103,7 @@ function internalError (msg) {
   return response;
 }
 
-function dataRequired (msg) {
+function dataRequired(msg) {
   const response = {
     status: 422,
     description: 'Unprocessable entity',
@@ -112,7 +112,7 @@ function dataRequired (msg) {
   return response;
 }
 
-function duplEmail (msg) {
+function duplEmail(msg) {
   const response = {
     status: 401,
     description: 'Unauthorized',

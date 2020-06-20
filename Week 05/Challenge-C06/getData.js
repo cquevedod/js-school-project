@@ -11,12 +11,12 @@ function populateDB(req, res) {
   getDataFromJSON()
     .then(data => {
       data.books.forEach(book => {
-      const newBook = new Books(book);
-      newBook.save();
+        const newBook = new Books(book);
+        newBook.save();
       });
-    res.send('db populated with books info');
+      res.send('db populated with books info');
     })
-    .catch(function(err) {
+    .catch(function (err) {
       console.log('error: ', err);
     });
 }
