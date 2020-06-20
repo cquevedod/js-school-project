@@ -47,7 +47,8 @@ function alreadyLentOrNot (book, msg) {
     message: msg,
     items: book.length,
     isLent: book[0].isLent,
-    book: book
+    bookId: book[0].id,
+    title: book[0].title
   };
   return response;
 }
@@ -77,7 +78,9 @@ function unAuthorized (book, msg) {
     status: 401,
     description: 'Unauthorized',
     message: msg,
-    book: book
+    title: book[0].title,
+    bookshelf: book[0].bookShelf,
+    id: book[0].id
   };
   return response;
 }
