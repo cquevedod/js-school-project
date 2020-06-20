@@ -4,7 +4,9 @@ let Schema = mongoose.Schema;
 let UserSchema = Schema({
   name: { 
     type: String,
-    required: true
+    required: true,
+    minlength: 3,
+    maxlength: 50,
    },
   surname: String,
   email: { 
