@@ -10,4 +10,5 @@ api.get('/books', md_auth.ensureAuth, BookController.getAllBooksOrByBookshelf);
 api.get('/book/mybooks', md_auth.ensureAuth, BookController.getLentBooksByUser);
 api.post('/books/:id/lend', md_auth.ensureAuth, BookController.lendBook);
 api.post('/books/:id/returnbook', md_auth.ensureAuth, BookController.returnBook);
+// api.delete('books/:id', md_auth.ensureAuth, BookController.deleteBook);
 module.exports = api;

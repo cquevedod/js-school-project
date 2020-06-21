@@ -1,7 +1,7 @@
 
 const msg = require('./statusMsg');
 const Book = require('../models/bookModel');
-let verify = require('../services/jwt');
+const verify = require('../services/jwt');
 
 async function getBookById(req, res) {
   try {
@@ -43,8 +43,8 @@ function getAllBooksOrByBookshelf(req, res) {
 
 function getLentBooksByUser(req, res) {
   const token = req.headers.authorization;
-  let tokenDecoded = verify.decodeToken(token);
-  let userId = tokenDecoded.sub;
+  const tokenDecoded = verify.decodeToken(token);
+  const userId = tokenDecoded.sub;
 
   Book.find({ user: userId })
     .then(books => {
@@ -108,8 +108,8 @@ function lendBook(req, res) {
 
 function returnBook(req, res) {
   const bookId = req.params.id;
-  let tokenDecoded = verify.decodeToken(req.headers.authorization);
-  let userId = tokenDecoded.sub;
+  const tokenDecoded = verify.decodeToken(req.headers.authorization);
+  const userId = tokenDecoded.sub;
   console.log(userId)
   Book.find({ id: bookId })
     .then(book => {

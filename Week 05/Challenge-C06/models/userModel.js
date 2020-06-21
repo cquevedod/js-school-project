@@ -19,7 +19,11 @@ let UserSchema = Schema({
     type: String,
     required: true
   },
-  role: String,
+  role: {
+    type: String,
+    required: true,
+    enum: ['admin', 'user']
+  },
   createdAt: Date
 });
 

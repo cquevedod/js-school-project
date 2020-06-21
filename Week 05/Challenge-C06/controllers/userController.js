@@ -2,6 +2,7 @@
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
+const Book = require('../models/bookModel');
 const jwt = require('../services/jwt');
 const msg = require('./statusMsg');
 const { padStart } = require('lodash');
@@ -11,7 +12,7 @@ function register(req, res) {
 
   const { name, surname, email, password, role } = req.body;
 
-  if (!password || !name || !email) return res.status(422).send(msg.dataRequired('Please complete the required data'));
+  if (!password || !name || !email || !role) return res.status(422).send(msg.dataRequired('Please complete the required data'));
   User.find({ email })
     .then(existingUser => {
       console.log(existingUser);
@@ -21,7 +22,7 @@ function register(req, res) {
         email: email.toLowerCase(),
         name,
         surname,
-        role: 'ROLE_USER'
+        role: role.toLowerCase()
       });
 
       bcrypt.hash(password, 10)
@@ -81,8 +82,43 @@ function loginUser(req, res) {
     })
 }
 
+function deleteUser(req, res) {
+  const userToBeDeleted = req.params.id;
+  const token = req.headers.authorization;
+  const tokenDecoded = jwt.decodeToken(token);
+  const role = tokenDecoded.role;
+
+  if(role != 'admin') return res.status(401).send({ message: 'Action not allowed! Go back!' })
+
+ 
+    Book.find({ user: userToBeDeleted })
+    .then(book => {
+      console.log(book);
+      if(book.length > 0) return res.status(401).send({ message: 'Action denied. This user have book(s) lent'});
+
+      User.deleteOne({ _id: userToBeDeleted }).exec()
+      .then(qty => {
+        console.log(qty);
+  
+        if (qty.n == 0) return res.status(201).send({ message: 'User does not exist' });
+        if (qty.n == 1)
+        return res.status(201).send({ message: 'User deleted' });
+
+      })
+      .catch(function (err) {
+        return res.status(400).send({ message: 'Error: ', err })
+      })   
+
+    })
+    .catch(function (err) {
+      return res.status(400).send({ message: 'Error: ', err })
+    })   
+
+}
+
 
 module.exports = {
   register,
-  loginUser
+  loginUser,
+  deleteUser
 };
