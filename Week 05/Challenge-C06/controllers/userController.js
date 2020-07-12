@@ -63,9 +63,9 @@ function loginUser(req, res) {
       if (!user) return res.status(404).send(msg.notFound('The user does not exist'));
 
       bcrypt.compare(password, user.password)
-        .then(check => {
-          if (!check) return res.status(404).send(msg.notFound('Wrong credentials'));
-          let token = jwt.createToken(user);
+        .then(validPassword => {
+          if (!validPassword) return res.status(404).send(msg.notFound('Wrong credentials'));
+          const token = jwt.createToken(user);
           return res.status(200)
             .send({
               email: email,
@@ -82,14 +82,32 @@ function loginUser(req, res) {
     })
 }
 
+function getMe(req, res) {
+
+  User.find({ _id: req.user.id}).select('-password')
+    .then(user => {
+        return res.status(200).send(user);
+    })
+    .catch(function (err) {
+      console.log('error: ', err);
+      return res.status(500).send(msg.internalError(), err);
+    })
+}
+
+function getAllUsers(req, res) {
+
+  User.find()
+    .then(users => {
+      return res.status(200).send(users);
+    })
+    .catch(function (err) {
+      console.log('error: ', err);
+      return res.status(500).send(msg.internalError(), err);
+    })
+}
+
 function deleteUser(req, res) {
   const userToBeDeleted = req.params.id;
-  const token = req.headers.authorization;
-  const tokenDecoded = jwt.decodeToken(token);
-  const role = tokenDecoded.role;
-
-  if(role != 'admin') return res.status(401).send({ message: 'Action not allowed! Go back!' })
-
  
     Book.find({ user: userToBeDeleted })
     .then(book => {
@@ -101,8 +119,7 @@ function deleteUser(req, res) {
         console.log(qty);
   
         if (qty.n == 0) return res.status(201).send({ message: 'User does not exist' });
-        if (qty.n == 1)
-        return res.status(201).send({ message: 'User deleted' });
+        if (qty.n == 1) return res.status(201).send({ message: 'User deleted' });
 
       })
       .catch(function (err) {
@@ -120,5 +137,7 @@ function deleteUser(req, res) {
 module.exports = {
   register,
   loginUser,
-  deleteUser
+  deleteUser,
+  getMe,
+  getAllUsers
 };

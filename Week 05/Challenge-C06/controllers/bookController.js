@@ -1,4 +1,5 @@
 
+const _ = require('lodash');
 const msg = require('./statusMsg');
 const Book = require('../models/bookModel');
 const verify = require('../services/jwt');
@@ -20,7 +21,7 @@ function getAllBooksOrByBookshelf(req, res) {
   const input = req.query.bookshelf;
 
   if (input) {
-    let location = input[0].toUpperCase() + input.slice(1);
+    const location = input[0].toUpperCase() + input.slice(1);
     const query = Book.find({ bookShelf: location });
     query.then(data => {
       if (!data.length) return res.status(400).send(msg.badRequest());
@@ -42,9 +43,10 @@ function getAllBooksOrByBookshelf(req, res) {
 }
 
 function getLentBooksByUser(req, res) {
-  const token = req.headers.authorization;
-  const tokenDecoded = verify.decodeToken(token);
-  const userId = tokenDecoded.sub;
+  const userId = req.user.id;
+  console.log(userId)
+
+  if (!userId) return res.status(500).send(msg.internalError('Error trying to get the books'));
 
   Book.find({ user: userId })
     .then(books => {
@@ -64,12 +66,9 @@ function lendBook(req, res) {
 
   const query = Book.find({ id: bookId });
   const givenDate = new Date(return_date)
+  const userId = req.user.id;
 
-  const token = req.headers.authorization;
-  console.log(token);
-  console.log(verify.decodeToken(token));
-  let tokenDecoded = verify.decodeToken(token);
-  let userId = tokenDecoded.sub;
+  if (!userId) return res.status(500).send(msg.internalError('Error trying to lent the book'));
 
   query.then(book => {
     if (!book.length) return res.status(404).send(msg.notFound('Item does not exist'));
@@ -90,6 +89,8 @@ function lendBook(req, res) {
 
       if (!validateDate(return_date)) return res.status(400).send(msg.invalidLentDate());
 
+     
+
       Book.updateOne({ id: bookId },
         {
           $set: {
@@ -108,13 +109,16 @@ function lendBook(req, res) {
 
 function returnBook(req, res) {
   const bookId = req.params.id;
-  const tokenDecoded = verify.decodeToken(req.headers.authorization);
-  const userId = tokenDecoded.sub;
+  const userId = req.user.id;
   console.log(userId)
+
+  if (!userId) return res.status(500).send(msg.internalError('Error trying to return the book'));
   Book.find({ id: bookId })
     .then(book => {
       if (!book.length) return res.status(404).send(msg.notFound('Item does not exist'));
+
       if (book[0].isLent && book[0].user != userId) return res.status(401).send(msg.alreadyLentOrNot(book, 'This book is already Lent by other user!'));
+
       if (!book[0].isLent) return res.status(404).send(msg.notFound('This book is not lent, so you can not return it'));
 
       Book.updateOne({ id: bookId },

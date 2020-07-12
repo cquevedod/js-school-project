@@ -1,10 +1,11 @@
 const jwt = require('jwt-simple');
 const moment = require('moment');
-let secret = 'one_second';
+const secret = 'one_second';
+// const config = require('config');
 
 exports.createToken = function (user) {
-  let payload = {
-    sub: user._id,
+  const payload = {
+    id: user._id,
     name: user.name,
     surname: user.surname,
     email: user.email,
