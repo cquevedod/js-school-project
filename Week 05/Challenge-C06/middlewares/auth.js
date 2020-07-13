@@ -8,8 +8,7 @@ module.exports = function (req, res, next) {
   if (!req.headers.authorization) {
     return res
       .status(401)
-      .send(msg
-        .unAuthorized('Access denied. No token provided'));
+      .send('Access denied. No token provided');
   }
 
   const token = req.headers.authorization.replace(/['"]+/g, "");

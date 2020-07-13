@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const app = express();
 const data = require('./getData');
+const error = require('./middlewares/error')
 
 /*load paths*/
 const user_routes = require('./routes/userRoute');
@@ -17,6 +18,7 @@ app.use(cors());
 
 app.use('/api', user_routes);
 app.use('/api', book_routes);
+app.use(error);
 
 app.get('/test', (req, res) => {
   res.status(200).send({ message: 'Test succesful' })

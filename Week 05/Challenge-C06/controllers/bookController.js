@@ -4,21 +4,20 @@ const msg = require('./statusMsg');
 const Book = require('../models/bookModel');
 const verify = require('../services/jwt');
 
-async function getBookById(req, res) {
-  try {
+async function getBookById(req, res, next) {
+
     const bookId = req.params.id;
     const query = await Book.find({ id: bookId });
 
     if (!query.length) return res.status(404).send(msg.notFound('Book does not exist'));
 
     return res.send(msg.ok(query));
-  } catch (err) {
-    console.log('error: ', err);
-  }
+
 }
 
 function getAllBooksOrByBookshelf(req, res) {
-  const input = req.query.bookshelf;
+  
+    const input = req.query.bookshelf;
 
   if (input) {
     const location = input[0].toUpperCase() + input.slice(1);
@@ -26,9 +25,7 @@ function getAllBooksOrByBookshelf(req, res) {
     query.then(data => {
       if (!data.length) return res.status(400).send(msg.badRequest());
       return res.send(msg.ok(data, `${location} books`));
-    }).catch(function (err) {
-      console.log('error: ', err);
-    });
+    })
 
   } else {
     const query = Book.find();
@@ -36,10 +33,9 @@ function getAllBooksOrByBookshelf(req, res) {
       if (!data.length) return res.status(204).send(msg.noContent());
       return res.send(msg.ok(data, 'All Books!'));
     })
-      .catch(function (err) {
-        console.log('error: ', err);
-      });
   }
+    
+  
 }
 
 function getLentBooksByUser(req, res) {
@@ -53,9 +49,7 @@ function getLentBooksByUser(req, res) {
       console.log(books.length)
       if (!books) return res.status(500).send(msg.internalError('Error tryng to get the books'));
       return res.status(200).send(msg.ok(books, 'Books lent by you'));
-    }).catch(function (err) {
-      console.log('error: ', err);
-    });
+    })
 }
 
 function lendBook(req, res) {
@@ -89,8 +83,6 @@ function lendBook(req, res) {
 
       if (!validateDate(return_date)) return res.status(400).send(msg.invalidLentDate());
 
-     
-
       Book.updateOne({ id: bookId },
         {
           $set: {
@@ -102,9 +94,6 @@ function lendBook(req, res) {
       return res.status(200).send(msg.lentTheBook(book, 'Book lent!', return_date));
     }
   })
-    .catch(function (err) {
-      console.log('error: ', err);
-    });
 }
 
 function returnBook(req, res) {
@@ -131,9 +120,6 @@ function returnBook(req, res) {
         }
       ).exec();
       return res.status(200).send(msg.lentTheBook(book, 'Book returned!'));
-    })
-    .catch(function (err) {
-      console.log('error: ', err);
     })
 }
 

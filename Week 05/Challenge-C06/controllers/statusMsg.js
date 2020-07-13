@@ -1,10 +1,10 @@
-function ok(data, msg = 'Sucess!') {
+function ok(data, msg = 'Success!') {
   const response = {
     status: 200,
     description: 'OK',
     message: msg,
     items: data.length,
-    books: data
+    data
   };
   return response;
 }

@@ -42,16 +42,7 @@ function register(req, res) {
               return res.status(500).send({ message: 'Error trying to save the user', err });
             })
         })
-        .catch(function (err) {
-          console.log('error: ', err);
-          return res.status(500).send(msg.internalError(), err)
-        })
-
     })
-    .catch(function (err) {
-      console.log('error: ', err);
-      return res.status(500).send(msg.internalError(), err);
-    });
 }
 
 function loginUser(req, res) {
@@ -72,13 +63,6 @@ function loginUser(req, res) {
               token
             });
         })
-        .catch(function (err) {
-          console.log('error: ', err);
-        })
-    })
-    .catch(function (err) {
-      console.log('error: ', err);
-      return res.status(500).send(msg.internalError(), err);
     })
 }
 
@@ -88,21 +72,13 @@ function getMe(req, res) {
     .then(user => {
         return res.status(200).send(user);
     })
-    .catch(function (err) {
-      console.log('error: ', err);
-      return res.status(500).send(msg.internalError(), err);
-    })
 }
 
 function getAllUsers(req, res) {
 
   User.find()
     .then(users => {
-      return res.status(200).send(users);
-    })
-    .catch(function (err) {
-      console.log('error: ', err);
-      return res.status(500).send(msg.internalError(), err);
+      return res.status(200).send(msg.ok(users));
     })
 }
 
@@ -122,15 +98,7 @@ function deleteUser(req, res) {
         if (qty.n == 1) return res.status(201).send({ message: 'User deleted' });
 
       })
-      .catch(function (err) {
-        return res.status(400).send({ message: 'Error: ', err })
-      })   
-
     })
-    .catch(function (err) {
-      return res.status(400).send({ message: 'Error: ', err })
-    })   
-
 }
 
 
