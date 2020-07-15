@@ -55,6 +55,7 @@ function loginUser(req, res) {
 
       bcrypt.compare(password, user.password)
         .then(validPassword => {
+          console.log(validPassword)
           if (!validPassword) return res.status(404).send(msg.notFound('Wrong credentials'));
           const token = jwt.createToken(user);
           return res.status(200)
@@ -67,7 +68,6 @@ function loginUser(req, res) {
 }
 
 function getMe(req, res) {
-
   User.find({ _id: req.user.id}).select('-password')
     .then(user => {
         return res.status(200).send(user);
@@ -75,7 +75,6 @@ function getMe(req, res) {
 }
 
 function getAllUsers(req, res) {
-
   User.find()
     .then(users => {
       return res.status(200).send(msg.ok(users));

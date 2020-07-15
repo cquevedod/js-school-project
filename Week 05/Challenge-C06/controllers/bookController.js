@@ -5,7 +5,7 @@ const Book = require('../models/bookModel');
 const verify = require('../services/jwt');
 
 async function getBookById(req, res, next) {
-
+    
     const bookId = req.params.id;
     const query = await Book.find({ id: bookId });
 
